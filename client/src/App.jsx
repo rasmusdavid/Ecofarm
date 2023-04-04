@@ -1,8 +1,7 @@
+import { router } from './routing/Router'
+import { RouterProvider } from "react-router-dom"
 
-import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default ()=> {
-  return <>
-  <h1>Hello World</h1>
-  </>
-}
+export default function () {
+    return <RouterProvider router={router} /> }
