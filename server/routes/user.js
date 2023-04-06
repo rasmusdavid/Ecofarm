@@ -6,7 +6,8 @@ const userRouter = Router()
 const userSchema = new Schema({
     username: String,
     email: String,
-    password: String
+    password: String,
+    admin: {type:Boolean, default:false}
 })
 
 mongoose.model('users', userSchema)
@@ -22,6 +23,7 @@ userRouter.post('/', async (request, response)=>{
     user.username = request.body.username
     user.email = request.body.email
     user.password = request.body.password
+    user.admin = request.body.admin
     await user.save()
     response.json("Saved")
 })
