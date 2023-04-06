@@ -8,9 +8,7 @@ export default ()=> {
     const [email, setEmail] = useState("")
 
     const [userdata, setUserdata ] = useState(null)
-
-    useStates('users', useFetch('/api/users.json'))
-
+    
     const users = useStates('users')
 
     users.map( user => console.log(user) )
