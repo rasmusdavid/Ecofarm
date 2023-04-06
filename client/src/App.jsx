@@ -1,5 +1,6 @@
 import { router } from './routing/Router'
 import { RouterProvider } from "react-router-dom"
+import { GlobalProvider } from './routing/Context';
 
 import {useStates, useFetch, useDebug, useAutoKeys} from 'react-easier'
 
@@ -12,5 +13,7 @@ export default function () {
     useStates('users', useFetch('/api/users'))
     useStates('auth', {LoggedIn: false})
 
-    return <RouterProvider router={router} /> 
+    return <GlobalProvider>
+        <RouterProvider router={router} />
+    </GlobalProvider>
 }

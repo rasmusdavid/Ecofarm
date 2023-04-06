@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import {useStates, useFetch} from 'react-easier'
+import { useState, useContext } from 'react';
+import GlobalContext from '../routing/Context';
+// import {useStates, useFetch} from 'react-easier'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios'
@@ -7,23 +8,28 @@ import axios from 'axios'
 export default ()=> {
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
-    
-    const users = useStates('users')
+
+    const { submitLogin, auth, users, isLoading } = useContext(GlobalContext)
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        // console.log( Object(users).map( user => console.log(user.target)) )
-        const keys1 = Object.keys(users)
-        const keys2 = Object(users.keys)
-        console.log(users[0].username)
-        users.forEach(user => {
-            console.log(user.username)
-        });
+
+
+    }
         // for (let i = 0; i < keys.length; i++) {
         //     console.log(keys[i]); // outputs "name" and "age"
         //   }
+        // const keys1 = Object.keys(users)
+        // const keys2 = Object(users.keys)
 
-    }
+        // const keys1 = Object.keys(users)
+        // const keys2 = Object(users.keys)
+        // console.log(users[0].username)
+        // users.forEach(user => {
+        //     console.log(user.username)
+        // });
+
+    
 
     return <>
         <Form>
