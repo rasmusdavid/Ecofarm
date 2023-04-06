@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import session from 'express-session'
 
 const api = express()
+const port = 3010
 
 api.use(session({
     secret: 'keyboradwhale',
@@ -18,10 +19,10 @@ api.use(session({
 api.use(express.json())
 const conn = "mongodb+srv://rasmusdavidsson:GKSkVS1HoRofyaT8@cluster0.ksxnfyq.mongodb.net/test"
 
-api.listen(80, () =>{
+api.listen(port, () =>{
     console.log("Mongodb started")
     mongoose.connect(conn, {dbName: "ecofarm"}).then((result, error)=>{
-        if(result) console.log("Connected")
+        if(result) console.log("Ecofarm server running on http://locahost:" + port)
         else if (error) console.error(error)
     })
 })
