@@ -9,7 +9,7 @@ export default ()=> {
     return <>
     <Container fluid="md">
         <Row className="p-3 mb-2 bg-success text-white">
-            <h1>Header</h1>
+            <h1>Eco farm</h1>
             </Row>
         <Row>
             <Outlet />

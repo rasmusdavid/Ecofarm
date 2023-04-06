@@ -1,0 +1,15 @@
+{
+  "name": "ecofarm",
+  "version": "1.0.0",
+  "description": "",
+  "devDependencies": {
+      "nodemon": "^2.0.22",
+      "concurrently": "^8.0.1"
+  },
+  "scripts": {
+    "dev": "concurrently \"nodemon ./server/api.js\" \"cd client && npm run dev\"",
+    "inshallah": "npm i && cd server && npm i && cd ../client && npm i"
+  },
+  "author": "",
+  "license": "ISC"
+}
