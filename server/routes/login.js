@@ -12,11 +12,11 @@ loginRouter.post('/', async (request, response)=> {
     if(user){
         response.status(201)
         request.session.user = user
-        response.json('You logged in')
+        response.json({LoggedIn : true})
     }
     else{
         response.status(401)
-        response.json('Wrong username or password')
+        response.json({LoggedIn : false})
     }
 })
 
@@ -39,7 +39,7 @@ loginRouter.get('/', async(request, response)=>{
 
 loginRouter.delete('/', (request, response)=>{
     delete(request.session.user)
-    response.json('Logged out')
+    response.json({LoggedIn : false})
 })
 
 export default loginRouter

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {useStates, useFetch} from 'react-easier'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import axios from 'axios'
 
 export default ()=> {
     const [password, setPassword] = useState("")
@@ -21,15 +22,16 @@ export default ()=> {
         // for (let i = 0; i < keys.length; i++) {
         //     console.log(keys[i]); // outputs "name" and "age"
         //   }
+
     }
 
     return <>
         <Form>
+            
         <Form.Group className="mb-3" controlId="formEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="formPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
