@@ -6,36 +6,21 @@ import Form from 'react-bootstrap/Form';
 export default ()=> {
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
-
-    const [userdata, setUserdata ] = useState(null)
     
     const users = useStates('users')
 
-    users.map( user => console.log(user) )
-
-    // const test = useFetch('http://localhost/api/users', {
-    // postProcess: result => console.log(result.data)
-    // })
-
-    // async function testConn() {
-    //     const response = await fetch("http://localhost/api/users");
-    //     const result = await response.json();
-    //     setUserdata(result);
-    //   }
-      
-    
-    // if( userdata === null){
-    //     testConn()
-    // }else { 
-    //     userdata.map((data)=>{
-    //         console.log(data.username)
-    //     })
-    // }
-
-
     const handleSubmit = (e)=>{
         e.preventDefault()
-        console.log(email, password)
+        // console.log( Object(users).map( user => console.log(user.target)) )
+        const keys1 = Object.keys(users)
+        const keys2 = Object(users.keys)
+        console.log(users[0].username)
+        users.forEach(user => {
+            console.log(user.username)
+        });
+        // for (let i = 0; i < keys.length; i++) {
+        //     console.log(keys[i]); // outputs "name" and "age"
+        //   }
     }
 
     return <>
