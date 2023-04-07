@@ -1,109 +1,60 @@
-import { useState } from 'react';
-import {useStates, useFetch} from 'react-easier'
+import { useState, useContext } from 'react';
+import GlobalContext from '../routing/Context';
+// import {useStates, useFetch} from 'react-easier'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import axios from 'axios'
+import Alert from 'react-bootstrap/Alert'
 
 export default ()=> {
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
+    const [error, setError] = useState("")
 
-    const [userdata, setUserdata ] = useState(null)
+    const { submitLogin, users } = useContext(GlobalContext)
 
-    const auth = useStates('auth')
-    
-    //const users = useStates('users')
+    const handleError = ( msg, msgVariant )=>{ 
+        return <Alert variant={msgVariant} onClose={( () => { setError("")})} dismissible>
+                <Alert.Heading>{msg}</Alert.Heading>
+            </Alert> }
 
-    //users.map( user => console.log(user) )
-
-    // const test = useFetch('http://localhost/api/users', {
-    // postProcess: result => console.log(result.data)
-    // })
-
-    // async function testConn() {
-    //     const response = await fetch("http://localhost/api/users");
-    //     const result = await response.json();
-    //     setUserdata(result);
-    //   }
-      
-    
-    // if( userdata === null){
-    //     testConn()
-    // }else { 
-    //     userdata.map((data)=>{
-    //         console.log(data.username)
-    //     })
-    // }
-
-
-    async function handleSubmit (e){
+    const handleSubmit = (e)=>{
         e.preventDefault()
 
-        try {
-            const response = await axios.post('/api/login', { email, password });
-            console.log('Loggat in');
-            auth.LoggedIn = response.data.LoggedIn
-          } catch (error) {
-            console.log('Fel inloggning')
-          } 
-
-
-        // let result = users.filter( item => item.email === email )
-        // console.log( result, users )
-
-        // const s = useStates('main', {
-        //     email: useFetch('get/api/users'), // json
-        //   });
-        //   console.log(s)
-
-        // const test = useFetch('/api/users')
-        // console.log("Hjsan")
-        // test.map(users.email)
-
-        // if (email === user.email){
-        //     console.log("Hejhej")
-        // }
-
-        //fetch get login
-
-        // async function login() {
-        //     const data = { email: "user@example.com", password: "mypassword" };
-        //     const options = {
-        //       method: 'POST',
-        //       headers: { 'Content-Type': 'application/json' },
-        //       body: JSON.stringify(data),
-        //     };
-          
-        //     try {
-        //       const response = await fetch('/api/login', options);
-        //       const data = await response.json();
-        //       console.log(data);
-        //     } catch (error) {
-        //       console.error(error);
-        //     }
-        //   }
-          
-        //   login();
+        if ( email === "" ){
+            setError(handleError("You have to fill in your email!", "danger"))}
+        else if(  password === "" ){
+            setError(handleError("You have to fill in your password!", "danger"))}
+        else{
+            users.map( user => {
+                if( email === user.email && password !== user.password){
+                    setError(handleError("Wrong password!", "danger"))}
+                else if( email !== user.email && password === user.password ){
+                    setError(handleError("E-mail dont match any user!", "danger"))}
+                else{ setError(handleError("Success!", "success")) 
+                      console.log(user)
+                      submitLogin(email, password, user) } })
+        }
     }
 
     return <>
         <Form>
-            
+            <Form.Text><h1>LOGIN</h1></Form.Text><br />
         <Form.Group className="mb-3" controlId="formEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
+            <Form.Control type="email" placeholder="Enter email" onChange={e => {setEmail(e.target.value); setError("")}} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)}/>
+            <Form.Control type="password" placeholder="Password" onChange={e => {setPassword(e.target.value); setError("")}}/>
         </Form.Group>
         <Button variant="success" type="submit" onClick={ handleSubmit }>
             Submit
         </Button>
         <Form.Text className="text-muted">
-            <br />Not registered? <a href="#"> Sign up here.</a>
+            <br />Not registered? <a href="#" onClick={ () => {console.log("You pressed the sign up button.")} }> Sign up here.</a>
             </Form.Text>
-        </Form></>
+        </Form>
+        { error }</>
 }
 
 
