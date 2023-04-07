@@ -10,8 +10,8 @@ export default function () {
 
     useDebug()
     useAutoKeys()
-    useStates('users', useFetch('/api/users'))
-    useStates('auth', {LoggedIn: false})
+    // useStates('users', useFetch('/api/users'))
+    // useStates('auth', {LoggedIn: false})
 
     return <GlobalProvider>
         <RouterProvider router={router} />

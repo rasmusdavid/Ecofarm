@@ -8,7 +8,6 @@ loginRouter.post('/', async (request, response)=> {
         email: request.body.email,
         password: request.body.password
     })
-
     if(user){
         response.status(201)
         request.session.user = user
