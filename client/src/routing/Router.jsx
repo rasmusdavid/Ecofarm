@@ -22,7 +22,6 @@ export const router = createBrowserRouter(createRoutesFromElements(<Route path="
     <Route index element={<Main/>}/>
     <Route path="start" element={<UserStartPage/>}/>
     <Route path="products" element={<UserProductPage/>}/>
-
     <Route path="ProducerStartPage" element={<ProducerStartPage/>}/>
     <Route path="ProducerViewProductPage" element={<ProducerViewProductPage/>}/>
     {/* <Route path="event" element={<EventPage/>}/>

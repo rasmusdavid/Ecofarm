@@ -3,6 +3,8 @@ import GlobalContext from '../routing/Context';
 
 import LoginForm from '../components/LoginForm'
 import LogoutButton from '../components/LogoutButton';
+import UserStartPage from '../pages/UserStartPage'
+import ProducerStartPage from '../pages/ProducerStartPage'
 
 export default ()=> {
     const { auth, logged } = useContext(GlobalContext)
@@ -10,7 +12,7 @@ export default ()=> {
 
     if(auth.LoggedIn){
         console.log( logged.admin )
-        return <> <LogoutButton /> { logged.admin ? "Producent sida" : "Kund sida"  } </>
+        return <> <LogoutButton /> { logged.admin ? <ProducerStartPage/> : <UserStartPage/>  } </>
     }else{ 
         return <LoginForm />}
 
