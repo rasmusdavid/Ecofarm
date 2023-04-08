@@ -12,8 +12,6 @@ export default ()=> {
 
     const { submitLogin, users } = useContext(GlobalContext)
 
-    const temp = "test"
-
     const handleError = ( msg, msgVariant )=>{ 
         return <Alert variant={msgVariant} onClose={( () => { setError("")})} dismissible>
                 <Alert.Heading>{msg}</Alert.Heading>
@@ -33,15 +31,13 @@ export default ()=> {
                 else if( email !== user.email && password === user.password ){
                     setError(handleError("E-mail dont match any user!", "danger"))}
                 else{ setError(handleError("Success!", "success")) 
-                      console.log(user)
                       submitLogin(email, password) } })
-                      console.log(error)
         }
     }
 
     return <>
-        <Form>{ String(temp) }
-            <Form.Text><h1>LOGIN{ String(temp) }</h1></Form.Text><br />
+        <Form>
+            <Form.Text><h1>LOGIN</h1></Form.Text><br />
         <Form.Group className="mb-3" controlId="formEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" onChange={e => {setEmail(e.target.value); setError("")}} />
