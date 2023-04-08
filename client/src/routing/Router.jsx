@@ -5,7 +5,8 @@ import Layout from "../layout/Layout.jsx"
 
 // Pages
 import Main from "../pages/MainPage.jsx"
-import StartPage from "../pages/StartPage.jsx"
+import UserProductPage from "../pages/UserProductPage.jsx"
+import UserStartPage from "../pages/UserStartPage.jsx"
 // import EventPage from "../pages/EventPage.jsx";
 // import SignupPage from "../pages/SignupPage.jsx";
 // import SupportPage from "../pages/SupportPage.jsx";
@@ -16,7 +17,8 @@ import StartPage from "../pages/StartPage.jsx"
 
 export const router = createBrowserRouter(createRoutesFromElements(<Route path="/" element={<Layout/>}>
     <Route index element={<Main/>}/>
-    <Route path="start" element={<StartPage/>}/>
+    <Route path="start" element={<UserStartPage/>}/>
+    <Route path="products" element={<UserProductPage/>}/>
     {/* <Route path="event" element={<EventPage/>}/>
     <Route path="support" element={<SupportPage/>}/>
     <Route path="signup" element={<SignupPage/>}/>
