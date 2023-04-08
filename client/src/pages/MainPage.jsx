@@ -10,9 +10,7 @@ export default ()=> {
     const { auth } = useContext(GlobalContext)
     if(auth.LoggedIn){
         const temp = auth.username
-        return <> <LogoutButton /> 
-                    { auth.admin ? "Producent sida "+temp : "Kund sida "+temp } 
-                </>
+        return <> <LogoutButton /> { logged.admin ? <ProducerStartPage/> : <UserStartPage/>  } </>
 
     }else{ 
         return <LoginForm />}
