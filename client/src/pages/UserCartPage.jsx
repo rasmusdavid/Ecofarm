@@ -4,7 +4,7 @@ export default () => {
     return <>
         <h1 className="text-center g-4">Cart</h1>
 
-        <table class="table">
+        <table className="table">
             <thead>
                 <tr>
                     <th scope="col">Product</th>
