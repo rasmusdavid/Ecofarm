@@ -29,6 +29,7 @@ loginRouter.get('/', async(request, response)=>{
             response.json({
                 username: request.session.user.username,
                 email: request.session.user.email,
+                admin: request.session.user.admin,
                 LoggedIn : true
             })
             return

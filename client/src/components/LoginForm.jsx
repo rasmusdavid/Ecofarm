@@ -31,8 +31,7 @@ export default ()=> {
                 else if( email !== user.email && password === user.password ){
                     setError(handleError("E-mail dont match any user!", "danger"))}
                 else{ setError(handleError("Success!", "success")) 
-                      console.log(user)
-                      submitLogin(email, password, user) } })
+                      submitLogin(email, password) } })
         }
     }
 

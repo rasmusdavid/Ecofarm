@@ -7,7 +7,7 @@ export const GlobalProvider = ({ children }) => {
   const [auth, setAuth] = useState({loggedIn:false})
   const [users, setUsers] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [logged, setLogged] = useState(false)
+  // const [logged, setLogged] = useState(false)
 
   useEffect(() => {
     void checkAuth()
@@ -33,7 +33,7 @@ export const GlobalProvider = ({ children }) => {
     setIsLoading(false)
   }
 
-  const submitLogin = async (email, password, user) => {
+  const submitLogin = async (email, password ) => {
     setIsLoading(true)
     const response = await fetch("/api/login", {
         method: "post",
@@ -42,7 +42,6 @@ export const GlobalProvider = ({ children }) => {
     })
     const result = await response.json()
     setIsLoading(false)
-    setLogged(user)
     void checkAuth()
   }
 
@@ -69,7 +68,7 @@ export const GlobalProvider = ({ children }) => {
       value={{
         auth,
         users,
-        logged,
+        // logged,
         isLoading,
         submitSignup,
         submitLogin,

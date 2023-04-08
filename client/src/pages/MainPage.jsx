@@ -7,12 +7,11 @@ import UserStartPage from '../pages/UserStartPage'
 import ProducerStartPage from '../pages/ProducerStartPage'
 
 export default ()=> {
-    const { auth, logged } = useContext(GlobalContext)
-    console.log(logged)
-
+    const { auth } = useContext(GlobalContext)
     if(auth.LoggedIn){
-        console.log( logged.admin )
-        return <> <LogoutButton /> { logged.admin ? <ProducerStartPage/> : <UserStartPage/>  } </>
+        const temp = auth.username
+        return <> <LogoutButton /> { logged.admin ? <ProducerStartPage/> : <UserStartPage/>  } </>
+
     }else{ 
         return <LoginForm />}
 
