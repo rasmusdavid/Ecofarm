@@ -32,3 +32,6 @@ api.use('/api/users', userRouter)
 
 import loginRouter from './routes/login.js'
 api.use('/api/login', loginRouter)
+
+import productRouter from './routes/products.js'
+api.use('/api/products', productRouter)
