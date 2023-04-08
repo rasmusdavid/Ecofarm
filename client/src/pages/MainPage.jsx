@@ -10,7 +10,7 @@ export default ()=> {
 
     if(auth.LoggedIn){
         console.log( logged.admin )
-        return <> <LogoutButton /> { logged.admin ? "Producent sida" : "Kund sida" } </>
+        return <> <LogoutButton /> { logged.admin ? "Producent sida" : "Kund sida"  } </>
     }else{ 
         return <LoginForm />}
 
