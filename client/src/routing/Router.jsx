@@ -7,11 +7,10 @@ import Layout from "../layout/Layout.jsx"
 import Main from "../pages/MainPage.jsx"
 import UserProductPage from "../pages/UserProductPage.jsx"
 import UserStartPage from "../pages/UserStartPage.jsx"
-// import EventPage from "../pages/EventPage.jsx";
-// import SignupPage from "../pages/SignupPage.jsx";
-
 import ProducerStartPage from "../pages/ProducerStartPage.jsx";
 import ProducerViewProductPage from "../pages/ProducerViewProductPage.jsx";
+import UserCartPage from "../pages/UserCartPage.jsx"
+
 // import SupportPage from "../pages/SupportPage.jsx";
 // import AccountPage from "../pages/AccountPage.jsx";
 // import PayMethodPage from "../pages/PayMethodPage.jsx";
@@ -22,6 +21,7 @@ export const router = createBrowserRouter(createRoutesFromElements(<Route path="
     <Route index element={<Main/>}/>
     <Route path="start" element={<UserStartPage/>}/>
     <Route path="products" element={<UserProductPage/>}/>
+    <Route path="cartPage" element={<UserCartPage/>}/>
     <Route path="ProducerStartPage" element={<ProducerStartPage/>}/>
     <Route path="ProducerViewProductPage" element={<ProducerViewProductPage/>}/>
     {/* <Route path="event" element={<EventPage/>}/>
