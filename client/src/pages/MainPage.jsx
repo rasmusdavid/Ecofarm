@@ -3,14 +3,18 @@ import GlobalContext from '../routing/Context';
 
 import LoginForm from '../components/LoginForm'
 import LogoutButton from '../components/LogoutButton';
+import Messages from '../components/Messages'
 
 export default ()=> {
-    const { auth, logged } = useContext(GlobalContext)
-    console.log(logged)
+    const { auth } = useContext(GlobalContext)
+    console.log(auth)
 
     if(auth.LoggedIn){
-        console.log( logged.admin )
-        return <> <LogoutButton /> { logged.admin ? "Producent sida" : "Kund sida" } </>
+        const temp = auth.username
+        return <> <LogoutButton /> 
+                    { auth.admin ? "Producent sida "+temp : "Kund sida "+temp } 
+                    <Messages />
+                </>
     }else{ 
         return <LoginForm />}
 

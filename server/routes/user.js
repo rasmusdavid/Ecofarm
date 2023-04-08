@@ -1,4 +1,4 @@
-import { response, Router } from "express";
+import { Router } from "express";
 import mongoose, { Schema } from "mongoose";
 
 const userRouter = Router()
@@ -7,7 +7,9 @@ const userSchema = new Schema({
     username: String,
     email: String,
     password: String,
-    admin: {type:Boolean, default:false}
+    admin: {type:Boolean, default:false},
+    messages: { sender: String,
+                message: String}
 })
 
 mongoose.model('users', userSchema)
