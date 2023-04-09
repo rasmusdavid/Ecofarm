@@ -6,10 +6,12 @@ const userRouter = Router()
 const userSchema = new Schema({
     username: String,
     email: String,
-    password: String,
     admin: {type:Boolean, default:false},
-    messages: { sender: String,
-                message: String}
+    password: String,
+    messages: { in: {type: Boolean, default:true },
+                author: String,
+                text: String,
+                orderID: Number}
 })
 
 mongoose.model('users', userSchema)
@@ -24,10 +26,17 @@ userRouter.post('/', async (request, response)=>{
     const user = new mongoose.models.users()
     user.username = request.body.username
     user.email = request.body.email
-    user.password = request.body.password
     user.admin = request.body.admin
+    user.password = request.body.password
+    user.messages = request.body.messages
     await user.save()
     response.json("Saved")
 })
+
+userRouter.delete('/:id', async (request, response) => {
+    const userId = request.params.id;
+    await mongoose.models.users.findByIdAndDelete(userId);
+    response.json("Deleted");
+  });
 
 export default userRouter

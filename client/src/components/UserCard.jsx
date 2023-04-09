@@ -11,12 +11,12 @@ export default () => {
     const [content, setContent] = useState("Make your choice with the buttons.")
     const { auth } = useContext(GlobalContext)
 
-    return <Card>
+    return <Card style={{maxWidth: "600px"}}>
                 <Card.Header><h1>Welcome {auth.username}</h1></Card.Header>
                 <Card.Body style={{}}>
-                    <Button variant="success" style={{margin: "10px"}}>{auth.admin ? "Hantera prod" : "Go Shop"}</Button>
-                    <Button variant="success" style={{margin: "10px"}} onClick={()=> setContent(<AccountCard />)}>Account</Button>
-                    <Button variant="success" style={{margin: "10px"}} onClick={()=> setContent(<MessageCard />)}>Messages</Button>
+                    <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}}>{auth.admin ? "Manage" : "Go Shop"}</Button>
+                    <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<AccountCard />)}>Account</Button>
+                    <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<MessageCard />)}>Messages</Button>
                     <LogoutButton/>
                 </Card.Body>
                 {content}

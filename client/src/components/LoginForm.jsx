@@ -38,18 +38,18 @@ export default ()=> {
     return <>
         <Form>
             <Form.Text><h1>LOGIN</h1></Form.Text><br />
-        <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" onChange={e => {setEmail(e.target.value); setError("")}} />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" onChange={e => {setPassword(e.target.value); setError("")}}/>
-        </Form.Group>
-        <Button variant="success" type="submit" onClick={ handleSubmit }>
-            Submit
-        </Button>
-        <Form.Text className="text-muted">
+            <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" onChange={e => {setEmail(e.target.value); setError("")}} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" onChange={e => {setPassword(e.target.value); setError("")}}/>
+            </Form.Group>
+            <Button variant="success" type="submit" onClick={ handleSubmit }>
+                Submit
+            </Button>
+            <Form.Text className="text-muted">
             <br />Not registered? <a href="#" onClick={ () => {console.log("You pressed the sign up button.")} }> Sign up here.</a>
             </Form.Text>
         </Form>
