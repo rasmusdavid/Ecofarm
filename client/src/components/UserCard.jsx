@@ -1,24 +1,24 @@
-import Container from 'react-bootstrap/Container'
-import Col from "react-bootstrap/Col"
-import Row from "react-bootstrap/Row"
+import Card from 'react-bootstrap/Card'
 import Button from "react-bootstrap/Button"
+import LogoutButton from './LogoutButton'
+import AccountCard from './AccountCard';
+
 import { useState, useContext } from 'react';
 import GlobalContext from '../routing/Context';
-
+import MessageCard from './MessageCard';
 
 export default () => {
+    const [content, setContent] = useState("Make your choice with the buttons.")
     const { auth } = useContext(GlobalContext)
 
-    return <Container fluid="md">
-        <h1>{ auth.username }</h1>
-        <Col>
-            <Row>
-                <Button variant="outline-success">Account info</Button>
-                <Button variant="outline-success">Account info</Button>
-                <Button variant="outline-success">Account info</Button>
-                <Button variant="outline-success">Account info</Button>
-            </Row>
-        </Col>
-    </Container>
-
+    return <Card>
+                <Card.Header><h1>Welcome {auth.username}</h1></Card.Header>
+                <Card.Body style={{}}>
+                    <Button variant="success" style={{margin: "10px"}}>{auth.admin ? "Hantera prod" : "Go Shop"}</Button>
+                    <Button variant="success" style={{margin: "10px"}} onClick={()=> setContent(<AccountCard />)}>Account</Button>
+                    <Button variant="success" style={{margin: "10px"}} onClick={()=> setContent(<MessageCard />)}>Messages</Button>
+                    <LogoutButton/>
+                </Card.Body>
+                {content}
+            </Card>
 }

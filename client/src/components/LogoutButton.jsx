@@ -8,6 +8,6 @@ export default () => {
     const handleClick = () => { logout() } 
 
     return <>
-        <Button variant="secondary" onClick={() => { logout() } }>Logout</Button>
+        <Button style={{margin: "10px"}} variant="secondary" onClick={() => { logout() } }>Logout</Button>
     </>
 }
