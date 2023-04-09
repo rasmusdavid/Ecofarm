@@ -11,6 +11,7 @@ import ProducerStartPage from "../pages/ProducerStartPage.jsx";
 import ProducerViewProductPage from "../pages/ProducerViewProductPage.jsx";
 import UserCartPage from "../pages/UserCartPage.jsx"
 import UserOrderInfo from "../pages/UserOrderInfo.jsx"
+import UserAccountInfo from "../pages/UserAccountInfo.jsx"
 
 // import SupportPage from "../pages/SupportPage.jsx";
 // import AccountPage from "../pages/AccountPage.jsx";
@@ -26,6 +27,7 @@ export const router = createBrowserRouter(createRoutesFromElements(<Route path="
     <Route path="ProducerStartPage" element={<ProducerStartPage/>}/>
     <Route path="ProducerViewProductPage" element={<ProducerViewProductPage/>}/>
     <Route path="userOrders" element={<UserOrderInfo/>}/>
+    <Route path="userAccount" element={<UserAccountInfo/>}/>
     {/* <Route path="event" element={<EventPage/>}/>
     <Route path="support" element={<SupportPage/>}/>
     <Route path="signup" element={<SignupPage/>}/>
