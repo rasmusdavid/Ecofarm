@@ -2,7 +2,46 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { useState, useContext } from 'react';
+import GlobalContext from '../routing/Context';
 
+
+export default ({item}) => {
+    
+    return <> 
+       
+        <Card style={{}}>
+            <Card.Body>              
+                <Card.Title>{item.item}</Card.Title>
+                <Form>
+                    <Row>
+                        <Col>
+                           <Card.Img variant="top" src={item.image}/>
+                        </Col>
+                        <Col>
+                            <Card.Text>
+                                {item.description}
+                            </Card.Text>
+                            <Card.Text>
+                                {item.price} kr  pcs.  {item.weight} kg
+                            </Card.Text>        
+                        </Col>
+                        <Col>
+                            <Form.Control placeholder="Qty."/>
+                        </Col>
+                        <Col>
+                            <Button variant="primary">Add to cart</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card.Body>
+        </Card>       
+    </>
+}
+
+
+/*
 export default () => {
     return <>
 
@@ -31,3 +70,4 @@ export default () => {
         </div>
     </>
 }
+*/
