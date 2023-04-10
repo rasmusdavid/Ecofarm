@@ -33,6 +33,18 @@ userRouter.post('/', async (request, response)=>{
     response.json("Saved")
 })
 
+userRouter.patch('/:id', async (req, res)=>{
+    try{
+        const account = await mongoose.models.users.findById(req.params.id)
+        console.log(req.params.id)
+        account.username = req.body.username ?? account.username
+        account.email = req.body.email ?? account.email
+        account.password = req.body.password ?? account.password
+        await account.save()
+        res.json(account)
+    }catch(err){ res.status(400).json({ message: err.message }) }
+})
+
 userRouter.delete('/:id', async (request, response) => {
     const userId = request.params.id;
     await mongoose.models.users.findByIdAndDelete(userId);

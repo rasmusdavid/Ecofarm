@@ -20,20 +20,28 @@ export default ()=> {
     const handleSubmit = (e)=>{
         e.preventDefault()
 
+        const temp = [false, false]
         if ( email === "" ){
             setError(handleError("You have to fill in your email!", "danger"))}
         else if(  password === "" ){
             setError(handleError("You have to fill in your password!", "danger"))}
         else{
             users.map( user => {
-                if( email === user.email && password !== user.password){
-                    setError(handleError("Wrong password!", "danger"))}
-                else if( email !== user.email && password === user.password ){
-                    setError(handleError("E-mail dont match any user!", "danger"))}
-                else{ setError(handleError("Success!", "success")) 
-                      submitLogin(email, password) } })
-        }
+                if( email === user.email){
+                    temp[0] = true
+                    if( password === user.password ){
+                        temp[1] = true
+                        setError(handleError("Success! Redirecting...", "success"))
+                        submitLogin( email, password )}} }) 
+            if(!temp[0]) setError(handleError("No matching email...", "danger"))
+            if(temp[0] && !temp[1]) setError(handleError("Wrong password...", "danger"))}
     }
+
+                    
+
+
+                // setError(handleError("No matching email!", "danger"))
+    
 
     return <>
         <Form>

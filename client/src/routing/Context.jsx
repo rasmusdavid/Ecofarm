@@ -33,6 +33,17 @@ export const GlobalProvider = ({ children }) => {
     setIsLoading(false)
   }
 
+  const submitChange = async (id ,username, email, password) => {
+    setIsLoading(true)
+    const response = await fetch("/api/users/" + String(id), {
+        method: "patch",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({id, username, email, password})
+    })
+    const result = await response.json()
+    setIsLoading(false)
+  }
+
   const submitLogin = async (email, password ) => {
     setIsLoading(true)
     const response = await fetch("/api/login", {
@@ -71,6 +82,7 @@ export const GlobalProvider = ({ children }) => {
         // logged,
         isLoading,
         submitSignup,
+        submitChange,
         submitLogin,
         logout,
     }}
