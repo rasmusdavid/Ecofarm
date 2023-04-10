@@ -58,7 +58,7 @@ export default ()=> {
                 Submit
             </Button>
             <Form.Text className="text-muted">
-            <br />Not registered? <a href="#" onClick={ () => {console.log("You pressed the sign up button.")} }> Sign up here.</a>
+            <br />Not registered? <a href="#" onClick={ propTypes.member = false }> Sign up here.</a>
             </Form.Text>
         </Form>
         { error }</>

@@ -5,19 +5,19 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 export default ()=> {
-    const [ username, setUsername ] = useState(null)
-    const [ email, setEmail ] = useState(null)
-    const [ password, setPassword ] = useState(null)
+    const [ username, setUsername ] = useState()
+    const [ email, setEmail ] = useState()
+    const [ password, setPassword ] = useState()
     const [ edit, setEdit ] = useState(true)
     const { auth, users, submitChange } = useContext(GlobalContext)
 
     const temp = []
     users.map( item => {if( item.email === auth.email) temp.push(item) })
     const user = temp[0]
+    console.log(user)
 
     const handleSave = (e)=>{
         e.preventDefault()
-        console.log(user._id, username, email, password)
         submitChange(user._id, username, email, password)
         setEdit(true)}
 
@@ -27,7 +27,7 @@ export default ()=> {
                 <Form.Control type="text" placeholder={user.username} disabled={edit} md="fluid" onChange={ e => setUsername(e.target.value)} />
                 <Form.Label>Email:</Form.Label>
                 <Form.Control type="email" placeholder={user.email} disabled={edit} onChange={ e => setEmail(e.target.value)}/>
-                <Form.Label>Password:</Form.Label>
+                <Form.Label>Password:</Form.Label>{console.log(user.username)}
                 <Form.Control type="password" placeholder={user.password} disabled={edit} onChange={ e => setPassword(e.target.value)} />
                 { edit ? 
                         <Button variant="success" onClick={ ()=> setEdit(false) }>Change info</Button>

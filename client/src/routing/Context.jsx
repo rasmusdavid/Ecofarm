@@ -6,8 +6,8 @@ export const GlobalProvider = ({ children }) => {
 
   const [auth, setAuth] = useState({loggedIn:false})
   const [users, setUsers] = useState([])
+  const [logged, setLogged] = useState()
   const [isLoading, setIsLoading] = useState(true)
-  // const [logged, setLogged] = useState(false)
 
   useEffect(() => {
     void checkAuth()
@@ -19,6 +19,7 @@ export const GlobalProvider = ({ children }) => {
     const response = await fetch("/api/login")
     const result = await response.json()
     setAuth(result)
+    console.log(result, auth)
     setIsLoading(false)
   }
 
@@ -36,12 +37,15 @@ export const GlobalProvider = ({ children }) => {
   const submitChange = async (id ,username, email, password) => {
     setIsLoading(true)
     const response = await fetch("/api/users/" + String(id), {
-        method: "patch",
+        method: "post",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({id, username, email, password})
+        body: JSON.stringify({"username": username, "email": email, "password": password})
     })
     const result = await response.json()
     setIsLoading(false)
+    console.log( "TEST", response.username )
+    void loadUsers()
+    void checkAuth()
   }
 
   const submitLogin = async (email, password ) => {
@@ -79,7 +83,7 @@ export const GlobalProvider = ({ children }) => {
       value={{
         auth,
         users,
-        // logged,
+        logged,
         isLoading,
         submitSignup,
         submitChange,

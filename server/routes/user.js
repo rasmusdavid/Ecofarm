@@ -11,7 +11,7 @@ const userSchema = new Schema({
     messages: { in: {type: Boolean, default:true },
                 author: String,
                 text: String,
-                orderID: Number}
+                orderID: Number }
 })
 
 mongoose.model('users', userSchema)
@@ -33,16 +33,15 @@ userRouter.post('/', async (request, response)=>{
     response.json("Saved")
 })
 
-userRouter.patch('/:id', async (req, res)=>{
-    try{
-        const account = await mongoose.models.users.findById(req.params.id)
+userRouter.post('/:id', async (req, res)=>{
         console.log(req.params.id)
+        const account = await mongoose.models.users.findById(req.params.id)
         account.username = req.body.username ?? account.username
         account.email = req.body.email ?? account.email
         account.password = req.body.password ?? account.password
         await account.save()
+        console.log(account)
         res.json(account)
-    }catch(err){ res.status(400).json({ message: err.message }) }
 })
 
 userRouter.delete('/:id', async (request, response) => {
