@@ -16,7 +16,7 @@ export default () => {
                 <Card.Body style={{}}>
                     <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}}>{auth.admin ? "Manage" : "Go Shop"}</Button>
                     <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<AccountCard />)}>Account</Button>
-                    <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<>MessageCard</>)}>Messages</Button>
+                    <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<MessageCard/>)}>Messages</Button>
                     <LogoutButton/>
                 </Card.Body>
                 {content}
