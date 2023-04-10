@@ -20,36 +20,44 @@ export default ()=> {
     const handleSubmit = (e)=>{
         e.preventDefault()
 
+        const temp = [false, false]
         if ( email === "" ){
             setError(handleError("You have to fill in your email!", "danger"))}
         else if(  password === "" ){
             setError(handleError("You have to fill in your password!", "danger"))}
         else{
             users.map( user => {
-                if( email === user.email && password !== user.password){
-                    setError(handleError("Wrong password!", "danger"))}
-                else if( email !== user.email && password === user.password ){
-                    setError(handleError("E-mail dont match any user!", "danger"))}
-                else{ setError(handleError("Success!", "success")) 
-                      submitLogin(email, password) } })
-        }
+                if( email === user.email){
+                    temp[0] = true
+                    if( password === user.password ){
+                        temp[1] = true
+                        setError(handleError("Success! Redirecting...", "success"))
+                        submitLogin( email, password )}} }) 
+            if(!temp[0]) setError(handleError("No matching email...", "danger"))
+            if(temp[0] && !temp[1]) setError(handleError("Wrong password...", "danger"))}
     }
+
+                    
+
+
+                // setError(handleError("No matching email!", "danger"))
+    
 
     return <>
         <Form>
             <Form.Text><h1>LOGIN</h1></Form.Text><br />
-        <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" onChange={e => {setEmail(e.target.value); setError("")}} />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" onChange={e => {setPassword(e.target.value); setError("")}}/>
-        </Form.Group>
-        <Button variant="success" type="submit" onClick={ handleSubmit }>
-            Submit
-        </Button>
-        <Form.Text className="text-muted">
+            <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" onChange={e => {setEmail(e.target.value); setError("")}} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" onChange={e => {setPassword(e.target.value); setError("")}}/>
+            </Form.Group>
+            <Button variant="success" type="submit" onClick={ handleSubmit }>
+                Submit
+            </Button>
+            <Form.Text className="text-muted">
             <br />Not registered? <a href="#" onClick={ () => {console.log("You pressed the sign up button.")} }> Sign up here.</a>
             </Form.Text>
         </Form>

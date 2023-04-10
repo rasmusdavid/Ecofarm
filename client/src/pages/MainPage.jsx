@@ -2,14 +2,12 @@ import { useContext } from 'react';
 import GlobalContext from '../routing/Context';
 
 import LoginForm from '../components/LoginForm'
-import LogoutButton from '../components/LogoutButton';
-import UserStartPage from '../pages/UserStartPage'
-import ProducerStartPage from '../pages/ProducerStartPage'
+import AccountPage from '../pages/AccountPage'
 
 export default ()=> {
     const { auth } = useContext(GlobalContext)
     if(auth.LoggedIn){
-        return <> <LogoutButton /> { auth.admin ? <ProducerStartPage/> : <UserStartPage/>  } </>
+        return <AccountPage />
 
     }else{ 
         return <LoginForm />}
