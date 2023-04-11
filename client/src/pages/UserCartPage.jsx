@@ -1,10 +1,10 @@
-
+import Table from 'react-bootstrap/Table';
 
 export default () => {
     return <>
         <h1 className="text-center g-4">Cart</h1>
 
-        <table className="table">
+        <Table className="table">
             <thead>
                 <tr>
                     <th scope="col">Product</th>
@@ -36,7 +36,7 @@ export default () => {
                     <td>TotalPrice</td>
                 </tr>
             </tbody>
-        </table>
+        </Table>
 
         <button className="btn btn-light btn-lg mx-auto col-8 p-4 btn-outline-secondary">Send order</button>
     </>
