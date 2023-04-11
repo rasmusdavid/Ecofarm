@@ -6,12 +6,13 @@ export const GlobalProvider = ({ children }) => {
 
   const [auth, setAuth] = useState({loggedIn:false})
   const [users, setUsers] = useState([])
-  const [logged, setLogged] = useState()
+  const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     void checkAuth()
     void loadUsers()
+    void loadProducts()
   }, []);
 
   const checkAuth = async () => {
@@ -19,7 +20,6 @@ export const GlobalProvider = ({ children }) => {
     const response = await fetch("/api/login")
     const result = await response.json()
     setAuth(result)
-    console.log(result, auth)
     setIsLoading(false)
   }
 
@@ -80,12 +80,20 @@ export const GlobalProvider = ({ children }) => {
     setIsLoading(false)
   }
 
+  const loadProducts = async () => {
+    setIsLoading(true)
+    const response = await fetch("/api/products")
+    const result = await response.json()
+    setProducts(result)
+    setIsLoading(false)
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         auth,
         users,
-        logged,
+        products,
         isLoading,
         submitSignup,
         submitChange,
