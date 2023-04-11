@@ -5,7 +5,7 @@ import Layout from "../layout/Layout.jsx"
 
 // Pages
 import Main from "../pages/MainPage.jsx"
-import ProducerViewProductPage from "../pages/ProducerViewProductPage.jsx";
+import SignupPage from "../pages/SignupPage";
 import UserCartPage from "../pages/UserCartPage.jsx"
 import AccountPage from "../pages/AccountPage.jsx"
 
@@ -13,5 +13,5 @@ export const router = createBrowserRouter(createRoutesFromElements(<Route path="
     <Route index element={<Main/>}/>
     <Route path="start" element={<AccountPage />}/>
     <Route path="cartPage" element={<UserCartPage/>}/>
-    <Route path="ProducerViewProductPage" element={<ProducerViewProductPage/>}/>
+    <Route path="signup" element={<SignupPage />}/>
 </Route>))

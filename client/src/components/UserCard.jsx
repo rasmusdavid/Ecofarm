@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
 import Button from "react-bootstrap/Button"
 import LogoutButton from './LogoutButton'
 import AccountCard from './AccountCard';
@@ -16,10 +17,12 @@ export default () => {
     return <Card style={{maxWidth: "600px"}}>
                 <Card.Header><h1>Welcome {auth.username}</h1></Card.Header>
                 <Card.Body style={{}}>
-                    <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<UserProductList/>)}>{auth.admin ? "Manage" : "Go Shop"}</Button>
-                    
-                    <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<AccountCard />)}>Account</Button>
-                    <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<>MessageCard</>)}>Messages</Button>
+                    <Col style={{flexDirection: "column"}}>
+                        <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<UserProductList/>)}>{auth.admin ? "Manage" : "Go Shop"}</Button>
+                        <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<>OrdersCard</>)}>Orders</Button>
+                        <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<AccountCard />)}>Account</Button>
+                        <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<>MessageCard</>)}>Messages</Button>
+                    </Col>
                     <LogoutButton/>
                 </Card.Body>
                 {content}
