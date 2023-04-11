@@ -23,15 +23,17 @@ export const GlobalProvider = ({ children }) => {
     setIsLoading(false)
   }
 
-  const submitSignup = async (email, password) => {
+  const submitSignup = async (username, email, password) => {
     setIsLoading(true)
     const response = await fetch("/api/users", {
         method: "post",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({email, password})
+        body: JSON.stringify({username, email, password})
     })
     const result = await response.json()
     setIsLoading(false)
+    void loadUsers()
+    void checkAuth()
   }
 
   const submitChange = async (id ,username, email, password) => {

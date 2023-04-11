@@ -1,4 +1,5 @@
 import { useState, useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import GlobalContext from '../routing/Context';
 // import {useStates, useFetch} from 'react-easier'
 import Button from 'react-bootstrap/Button';
@@ -58,7 +59,7 @@ export default ()=> {
                 Submit
             </Button>
             <Form.Text className="text-muted">
-            <br />Not registered? <a href="#" onClick={ propTypes.member = false }> Sign up here.</a>
+            <br />Not registered? <NavLink to="signup">Sign up here.</NavLink>
             </Form.Text>
         </Form>
         { error }</>
