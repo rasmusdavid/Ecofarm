@@ -17,6 +17,7 @@ export default () => {
                 <Card.Body style={{}}>
                     <Col style={{flexDirection: "column"}}>
                         <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}}>{auth.admin ? "Manage" : "Go Shop"}</Button>
+                        <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<>OrdersCard</>)}>Orders</Button>
                         <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<AccountCard />)}>Account</Button>
                         <Button variant="success" style={{width:"100%", maxWidth:"150px", margin: "10px"}} onClick={ ()=> setContent(<>MessageCard</>)}>Messages</Button>
                     </Col>
