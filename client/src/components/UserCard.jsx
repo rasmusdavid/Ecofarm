@@ -8,7 +8,9 @@ import OrderHistoria from "./OrderHistoria";
 import { useState, useContext } from "react";
 import GlobalContext from "../routing/Context";
 import MessageCard from "./MessageCard";
+import UserCartPage from "../pages/UserCartPage";
 import UserProductList from "./UserProductList";
+import AddProduct from "./AddProduct";
 
 export default () => {
   const [content, setContent] = useState("Make your choice with the buttons.");
@@ -23,29 +25,39 @@ export default () => {
         <Col style={{ flexDirection: "column" }}>
           <Button
             variant="success"
-            style={{ width: "100%", maxWidth: "150px", margin: "10px" }}
-            onClick={() => setContent(<UserProductList />)}
+            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
+            onClick={() =>
+              setContent(auth.admin ? <AddProduct /> : <UserProductList />)
+            }
           >
             {auth.admin ? "Manage" : "Go Shop"}
           </Button>
           <Button
             variant="success"
-            style={{ width: "100%", maxWidth: "150px", margin: "10px" }}
+            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
             onClick={() => setContent(<OrderHistoria />)}
           >
-            Orders
+            {" "}
+            Orders{" "}
           </Button>
           <Button
             variant="success"
-            style={{ width: "100%", maxWidth: "150px", margin: "10px" }}
+            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
+            onClick={() => setContent(<UserCartPage />)}
+          >
+            Cart
+          </Button>
+          <Button
+            variant="success"
+            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
             onClick={() => setContent(<AccountCard />)}
           >
             Account
           </Button>
           <Button
             variant="success"
-            style={{ width: "100%", maxWidth: "150px", margin: "10px" }}
-            onClick={() => setContent(<>MessageCard</>)}
+            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
+            onClick={() => setContent(<MessageCard />)}
           >
             Messages
           </Button>
