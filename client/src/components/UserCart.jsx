@@ -22,17 +22,12 @@ export default () => {
 
     const sendOrder1 = (items) => {
         sendOrders(items)
+         }
         
-
-    }
-    
-    
     return <>
         <Container id="cart" >
         <h1 className="text-center g-4">Cart</h1>
-
         
-
         <Table className="table">
             <thead>
                 <tr>
