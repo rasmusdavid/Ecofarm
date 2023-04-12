@@ -17,7 +17,7 @@ export default () => {
   const { auth } = useContext(GlobalContext);
 
   return (
-    <Card style={{ maxWidth: "600px" }}>
+    <Card>
       <Card.Header>
         <h1>Welcome {auth.username}</h1>
       </Card.Header>

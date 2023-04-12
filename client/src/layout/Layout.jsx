@@ -8,8 +8,8 @@ import Button from "react-bootstrap/esm/Button";
 
 export default () => {
     return <>
-        <Container fluid="md">
-                <Row className="p-3 mb-2 bg-success text-white" style={{ maxWidth: "600px" }}>
+        <Container style={{ maxWidth: "800px", margin: "auto" }} fluid="md">
+                <Row className="p-3 mb-2 bg-success text-white" >
                 <h1>EcoFarm</h1>    
                 </Row>
                 <Row>
