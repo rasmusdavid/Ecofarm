@@ -94,6 +94,7 @@ export const GlobalProvider = ({ children }) => {
         auth,
         users,
         products,
+        // logged,
         isLoading,
         submitSignup,
         submitChange,

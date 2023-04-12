@@ -12,6 +12,7 @@ const productSchema = new Schema( {
     description: String,
     weight: Number,
     price: Number,
+    image: String
     
     
 })
@@ -32,6 +33,7 @@ productRouter.post('/', async (request, response) =>{
     product.description = request.body.description
     product.weight = request.body.weight
     product.price = request.body.price
+    product.image = request.body.image
     await product.save()
     response.json("Saved")
 })
