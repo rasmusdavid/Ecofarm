@@ -24,12 +24,7 @@ export default () => {
       </Card.Header>
       <Card.Body style={{}}>
         <Col style={{ flexDirection: "column" }}>
-          <Button
-            variant="success"
-            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
-            onClick={() =>
-              setContent(auth.admin ? <AddProduct /> : <UserProductList />)
-            }
+          <Button variant="success"style={{ width: "100%", maxWidth: "100px", margin: "10px" }}onClick={() =>setContent(auth.admin ? <AddProduct /> : <UserProductList />)}
           >
             {auth.admin ? "Manage" : "Go Shop"}
           </Button>

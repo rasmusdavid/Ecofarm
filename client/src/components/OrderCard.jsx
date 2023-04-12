@@ -22,11 +22,12 @@ export default ({ item }) => {
                 </tr>
             </thead>
 
-            {cart.items.map(product => <tbody>
-                <tr>
+            {cart.items.map((product, index) => <tbody>
+                <tr key={index}>
                     <td>{product.item}</td>
                     <td>{product.weight} kg</td>
                     <td>{product.price} kr</td>
+                    
                     {/* <td> {cart.quantity} </td> */}
                 </tr>
             </tbody>)}

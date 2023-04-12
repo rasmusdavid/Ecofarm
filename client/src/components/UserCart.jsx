@@ -20,28 +20,12 @@ export default () => {
         setAdd(false)   
     }
 
-    const sendOrder1 = (cart) => {
+    const sendOrder1 = (items) => {
+        sendOrders(items)
         
-        //console.log(cart.item)
-        //cart.map(items)
-        //console.log(cart._[0].item)
-        //console.log(cart.find(element => element === cart.item))
-        let itemArray = []
-        let weightArray = []
-        let priceArray = []
-           for(let i = 0; i<cart.length; i++){
-            itemArray.push(cart._[i].item)
-           }
-           for(let i = 0; i<cart.length; i++){
-            weightArray.push(cart._[i].weight)
-           }
-           for(let i = 0; i<cart.length; i++){
-            priceArray.push(cart._[i].price)
-           }
-           console.log(itemArray)
-           console.log(weightArray)
-           console.log(priceArray)
+
     }
+    
     
     return <>
         <Container id="cart" >
