@@ -3,22 +3,29 @@ import Table from 'react-bootstrap/Table';
 import Button from "react-bootstrap/esm/Button";
 import ButtonGroup from "react-bootstrap/ButtonToolbar"
 import Container from "react-bootstrap/esm/Container";
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import GlobalContext from '../routing/Context';
 
 
 export default () => {
     const cart = useStates('cart');
     const [add, setAdd] = useState(true)
+    const { sendOrders } = useContext(GlobalContext)
 
     const emptyCart = () => {
         cart.items = []
         cart.total = 0
         cart.quantity = 0
         cart.total2 = 0
-        setAdd(false) 
-         
+        setAdd(false)   
     }
+
+    const sendOrder1 = (items) => {
+        sendOrders(items)
+        
+
+    }
+    
     
     return <>
         <Container id="cart" >
@@ -61,7 +68,7 @@ export default () => {
         <ButtonGroup className="justify-content-center" >
             <Button variant="secondary" size="sm" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={emptyCart}>Empty Cart</Button>
            
-            <Button variant="secondary" size="sm" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} >Send order</Button>
+            <Button variant="secondary" size="sm" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={sendOrder1(cart.items)} >Send order</Button>
         </ButtonGroup>
        
         </Container>

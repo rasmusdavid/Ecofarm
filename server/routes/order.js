@@ -8,23 +8,30 @@ const orderScehema = new Schema({
   weight: Number,
   price: Number,
   email: String,
+  orderOwner: String
 });
 
 mongoose.model("orders", orderScehema);
 
 orderRouter.get("/", async (request, response) => {
-  const order = await mongoose.models.orders.find();
-  response.json(order);
+  //const order = await mongoose.models.orders.find();
+  if(request.session?.user?.email) {
+    const results = await mongoose.models.orders.find({ email: request.session.user.email})
+  response.json(results);
+  }
 });
 
 orderRouter.post("/", async (request, response) => {
-  console.log(request.body);
-  const order = new mongoose.models.orders();
-  order.item = request.body.item;
-  order.weight = request.body.weight;
-  order.price = request.body.price;
-  order.email = request.body.email;
-  order.save();
+  console.log(request);
+ 
+  request.body.forEach(item => {
+    const order = new mongoose.models.orders();
+    order.item = item.item;
+    order.weight = item.weight;
+    order.price = item.price;
+    order.email = request.session.user.email;
+    order.save();
+  });
   response.json("Saved");
 });
 

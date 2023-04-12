@@ -3,14 +3,15 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { useStates } from "react-easier";
+import { useStates, useFetch } from "react-easier";
 import { useState, useContext } from 'react';
 import GlobalContext from '../routing/Context';
 import { Alert } from 'react-bootstrap';
 
 
-export default ( {product} ) => {
 
+export default ( {product} ) => {
+    useStates('products', useFetch('/products.json'))
     const cart = useStates('cart');
     const products = useStates('products')
     // [quantity, setQuantity] = useState([])

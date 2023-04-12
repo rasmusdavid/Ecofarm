@@ -12,8 +12,12 @@ export default () => {
       <Container className="justify-content-md-center">
         <h1 className="text-center g-4"> Order History</h1>
         <div>
+
           {orderHistory.map((props) => {
-            return <OrderCard item={props} />;
+        
+           
+            return <OrderCard item={props} />
+           
           })}
         </div>
       </Container>
