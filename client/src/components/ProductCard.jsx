@@ -11,21 +11,17 @@ import GlobalContext from '../routing/Context';
 export default ( {product} ) => {
 
     const cart = useStates('cart');
-
-    const [quantity, setQuantity] = useState([])
+    const products = useStates('products')
+    // [quantity, setQuantity] = useState([])
 
     const add = (e, product) => {
 
         cart.items.push(product)
-
         cart.total = cart.total + product.price
         cart.total2 = cart.total2 + product.weight
-        cart.quantity = cart.quantity + quantity
-      
+        // cart.quantity = cart.quantity + quantity     
     }
  
-
-
     return <>
 
         <Card style={{}}>
@@ -40,14 +36,17 @@ export default ( {product} ) => {
                             <Card.Text>
                                 {product.description}
                             </Card.Text>
+                        </Col>
+                        <Col>
                             <Card.Text>
                                 {product.price} kr  pcs. {product.weight} kg
                             </Card.Text>
                         </Col>
+
                         <Col>
 
-                              {/* <Form.Control type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>   */}
-                              <Form.Control type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>  
+                            {/* <Form.Control type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>   */}
+                            {/* <Form.Control type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>   */}
 
                         </Col>
                         <Col>
