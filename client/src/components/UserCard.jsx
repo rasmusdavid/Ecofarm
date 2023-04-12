@@ -23,9 +23,9 @@ export default () => {
         <Col style={{ flexDirection: "column" }}>
             <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={ ()=> setContent(auth.admin ? <AddProduct/> :  <UserProductList/>)}>{auth.admin ? "Manage" : "Go Shop"}</Button>
             <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={ ()=> setContent(<>OrdersCard</>)}>Orders</Button>
-            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={() => setContent(<UserCartPage />)}>Cart</Button>
-            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={() => setContent(<AccountCard />)}>Account</Button>
-            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={() => setContent(<MessageCard />)}>Messages</Button>
+            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={ () => setContent(<UserCartPage />)}>Cart</Button>
+            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={ () => setContent(<AccountCard />)}>Account</Button>
+            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={ () => setContent(<MessageCard />)}>Messages</Button>
             </Col>
             <LogoutButton />
         </Card.Body>
