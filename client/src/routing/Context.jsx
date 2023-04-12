@@ -114,6 +114,14 @@ export const GlobalProvider = ({ children }) => {
     })
   }
 
+  const sendOrders = async (name, weight, price) => {
+    const response = await fetch("/api/orders", {
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, weight, price })
+    })
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -122,6 +130,7 @@ export const GlobalProvider = ({ children }) => {
         products,
         orderHistory,
         isLoading,
+        sendOrders,
         submitSignup,
         submitChange,
         submitLogin,

@@ -11,6 +11,7 @@ import MessageCard from "./MessageCard";
 import UserCartPage from "../pages/UserCartPage";
 import UserProductList from "./UserProductList";
 import AddProduct from "./AddProduct";
+import UserCart from "./UserCart";
 
 export default () => {
   const [content, setContent] = useState("Make your choice with the buttons.");
@@ -43,7 +44,7 @@ export default () => {
           <Button
             variant="success"
             style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
-            onClick={() => setContent(<UserCartPage />)}
+            onClick={() => setContent(<UserCart />)}
           >
             Cart
           </Button>
