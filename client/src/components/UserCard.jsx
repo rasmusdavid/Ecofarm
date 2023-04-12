@@ -18,7 +18,7 @@ export default () => {
         <Card.Header><h1>Welcome {auth.username}</h1></Card.Header>
         <Card.Body style={{}}>
             <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={() => setContent(<UserProductList />)}>{auth.admin ? "Manage" : "Go Shop"}</Button>
-            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={() => setContent(<UserCartPage />)}>cart</Button>
+            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={() => setContent(<UserCartPage />)}>Cart</Button>
             <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={() => setContent(<AccountCard />)}>Account</Button>
             <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={() => setContent(<MessageCard />)}>Messages</Button>
             <LogoutButton />

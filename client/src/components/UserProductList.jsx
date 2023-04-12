@@ -15,7 +15,7 @@ export default () => {
             <h1 className="text-center g-4">Productlist</h1>
             <div>
                 {products.map(props => {
-                    return <ProductCard item = {props}/>
+                    return <ProductCard product = {props}/>
 
                 })
                 }               

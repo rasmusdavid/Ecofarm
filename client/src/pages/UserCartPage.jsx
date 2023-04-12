@@ -1,8 +1,20 @@
-import Table from 'react-bootstrap/Table';
+import  UserCart  from '../components/UserCart'
+import Button from 'react-bootstrap/esm/Button';
+
+
 
 export default () => {
     return <>
-        <h1 className="text-center g-4">Cart</h1>
+       
+      <UserCart/>
+
+      {/* <Button variant="secondary" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} >Send order</Button> */}
+    </>
+
+}
+
+/*
+
 
         <Table className="table">
             <thead>
@@ -18,16 +30,8 @@ export default () => {
                     <td>Amount</td>
                     <td>Price</td>
                 </tr>
-                <tr>
-                    <td>Product</td>
-                    <td>Amount</td>
-                    <td>Price</td>
-                </tr>
-                <tr>
-                    <td>Product</td>
-                    <td>Amount</td>
-                    <td>Price</td>
-                </tr>
+           
+             
                 <tr>
                     <td>
                     Total
@@ -38,7 +42,4 @@ export default () => {
             </tbody>
         </Table>
 
-        <button className="btn btn-light btn-lg mx-auto col-8 p-4 btn-outline-secondary">Send order</button>
-    </>
-
-}
+*/

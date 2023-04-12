@@ -8,53 +8,50 @@ import { useState, useContext } from 'react';
 import GlobalContext from '../routing/Context';
 
 
-export default ({ item }) => {
+export default ( {product} ) => {
 
-    // const cart = useStates('cart');
-    // //const [cart, setCart] = useState([])
+    const cart = useStates('cart');
 
-    // const emptyCart = () => {
-    //     cart.items = []
-    //     cart.total = 0
-    // }
+    const [quantity, setQuantity] = useState([])
 
-    // const add = (e, item) => {
-    //     cart.items.push(product)
-    //     //console.log(`Product added: ${item.name} \nProduct price: ${item.price} \nNew total:`)
-    // }
+    const add = (e, product) => {
 
-    const [cart, setCart] = useState({ items: [], total: 0 })
+        cart.items.push(product)
 
-
-    const add = (e, item) => {
-        setCart({ items: [...cart.items, item], total: cart.total + item.price })
-        console.log(item.item, item.price)
-        console.log(cart)
+        cart.total = cart.total + product.price
+        cart.total2 = cart.total2 + product.weight
+        cart.quantity = cart.quantity + quantity
+      
     }
+ 
+
 
     return <>
 
         <Card style={{}}>
             <Card.Body>
-                <Card.Title>{item.item}</Card.Title>
-                <Form>
+                <Card.Title>{product.item}</Card.Title>
+                <Form >
                     <Row>
                         <Col>
-                            <Card.Img variant="top" src={item.image} />
+                            <Card.Img variant="top" src={product.image} />
                         </Col>
                         <Col>
                             <Card.Text>
-                                {item.description}
+                                {product.description}
                             </Card.Text>
                             <Card.Text>
-                                {item.price} kr  pcs.  {item.weight} kg
+                                {product.price} kr  pcs. {product.weight} kg
                             </Card.Text>
                         </Col>
                         <Col>
-                            <Form.Control placeholder="Qty." />
+
+                              {/* <Form.Control type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>   */}
+                              <Form.Control type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>  
+
                         </Col>
                         <Col>
-                            <Button variant="primary" type='button' onClick={(e) => add(e, item)}>Add to cart</Button>
+                            <Button variant="primary" type='button' onClick={(e) => add(e, product)}>Add to cart</Button>
                         </Col>
                     </Row>
                 </Form>
