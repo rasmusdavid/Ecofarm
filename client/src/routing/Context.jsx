@@ -8,7 +8,6 @@ export const GlobalProvider = ({ children }) => {
   const [users, setUsers] = useState([])
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  // const [logged, setLogged] = useState(false)
 
   useEffect(() => {
     void checkAuth()
@@ -24,26 +23,31 @@ export const GlobalProvider = ({ children }) => {
     setIsLoading(false)
   }
 
-  const submitSignup = async (email, password) => {
+  const submitSignup = async (username, email, password) => {
     setIsLoading(true)
     const response = await fetch("/api/users", {
         method: "post",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({email, password})
+        body: JSON.stringify({username, email, password})
     })
     const result = await response.json()
     setIsLoading(false)
+    void loadUsers()
+    void checkAuth()
   }
 
   const submitChange = async (id ,username, email, password) => {
     setIsLoading(true)
     const response = await fetch("/api/users/" + String(id), {
-        method: "patch",
+        method: "post",
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({id, username, email, password})
+        body: JSON.stringify({"username": username, "email": email, "password": password})
     })
     const result = await response.json()
     setIsLoading(false)
+    console.log( "TEST", response.username )
+    void loadUsers()
+    void checkAuth()
   }
 
   const submitLogin = async (email, password ) => {

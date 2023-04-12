@@ -1,4 +1,5 @@
 import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
 import Button from "react-bootstrap/Button"
 import LogoutButton from './LogoutButton'
 import AccountCard from './AccountCard';
