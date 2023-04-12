@@ -1,6 +1,6 @@
 import { Router } from "express";
 import mongoose, { Schema } from "mongoose";
-import { msgSchema } from "./messages.js";
+import { msgSchema } from "./message.js";
 
 const userRouter = Router()
 

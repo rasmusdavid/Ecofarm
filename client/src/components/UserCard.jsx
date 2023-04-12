@@ -7,10 +7,10 @@ import OrderHistoria from "./OrderHistoria";
 
 import { useState, useContext } from "react";
 import GlobalContext from "../routing/Context";
-import MessageCard from "./MessageCard";
 import UserCartPage from "../pages/UserCartPage";
 import UserProductList from "./UserProductList";
 import AddProduct from "./AddProduct";
+import MessagePage from "../pages/MessagePage";
 
 export default () => {
   const [content, setContent] = useState("Make your choice with the buttons.");
@@ -57,7 +57,7 @@ export default () => {
           <Button
             variant="success"
             style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
-            onClick={() => setContent(<MessageCard />)}
+            onClick={() => setContent(<MessagePage />)}
           >
             Messages
           </Button>

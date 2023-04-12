@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useContext } from "react";
 import GlobalContext from "../routing/Context";
-import SendMsgCard from "./SendMsg";
+import SendMsg from "../components/SendMsg";
 
 
 
@@ -14,7 +14,7 @@ export default ()=>{
 
     const logged = user[0]
 
-    return <SendMsgCard admin={logged.admin} />
+    return <SendMsg admin={logged.admin} />
 
     // return <Form style={{margin: "20px"}} variant="success">
     //             {String(logged.messages)}
