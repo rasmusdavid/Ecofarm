@@ -31,11 +31,6 @@ export default ( {product} ) => {
         setMessage(<Alert variant="danger">"Product removed"</Alert>)
     }
 
-    const button = () => {
-        <h5>hej</h5>
-    }
-
-
  
     return <>
     
