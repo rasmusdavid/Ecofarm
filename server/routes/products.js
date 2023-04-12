@@ -37,4 +37,10 @@ productRouter.post('/', async (request, response) =>{
     response.json("Saved")
 })
 
+productRouter.delete('/:id', async (request, response) => {
+    const productId = request.params.id;
+    await mongoose.models.products.findByIdAndDelete(productId);
+    response.json("Deleted");
+})
+
 export default productRouter

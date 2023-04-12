@@ -5,12 +5,21 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useState, useContext } from 'react';
 import GlobalContext from '../routing/Context';
+import { Alert } from 'react-bootstrap';
 
 
 export default ({item}) => {
+
+    const { removeProduct } = useContext(GlobalContext)
+    const [message, setMessage] = useState('')
+
+    const removeItem = (id) => {
+        removeProduct(id)
+        setMessage(<Alert variant="danger">"Product removed"</Alert>)
+    }
     
     return <> 
-       
+       {message}
         <Card style={{}}>
             <Card.Body>              
                 <Card.Title>{item.item}</Card.Title>
@@ -32,6 +41,7 @@ export default ({item}) => {
                         </Col>
                         <Col>
                             <Button variant="primary">Add to cart</Button>
+                            <Button variant='danger' onClick={() => { removeItem(item._id) } }>Remove</Button>
                         </Col>
                     </Row>
                 </Form>

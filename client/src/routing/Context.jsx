@@ -95,6 +95,13 @@ export const GlobalProvider = ({ children }) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ item, price, weight, category, subcat, description, image })
     })
+    setIsLoading(false)
+  }
+
+  const removeProduct = async (id) => {
+    const response = await fetch("/api/products/" + id, {
+      method: "delete"
+    })
   }
 
   return (
@@ -108,7 +115,8 @@ export const GlobalProvider = ({ children }) => {
         submitChange,
         submitLogin,
         logout,
-        addProduct
+        addProduct,
+        removeProduct
       }}
     >
       {children}

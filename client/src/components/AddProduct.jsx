@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Form, FormGroup, FormLabel, FormControl, Button } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
 import GlobalContext from "../routing/Context"
+import UserProductList from './UserProductList';
 
 export default () => {
     const [item, setItem] = useState('');
@@ -25,7 +26,7 @@ export default () => {
     }
 }
 
-  return (
+  return <>
     <Form onSubmit={handleSubmit}>
       <FormGroup>
         <FormLabel>Item</FormLabel>
@@ -65,6 +66,7 @@ export default () => {
       <Button type="submit">Submit</Button>
       { message }
     </Form>
-  );
+    <UserProductList/>
+  </>
 }
 
