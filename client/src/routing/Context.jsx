@@ -4,27 +4,30 @@ const GlobalContext = createContext(null);
 
 export const GlobalProvider = ({ children }) => {
 
-  const [auth, setAuth] = useState({ loggedIn: false })
-  const [users, setUsers] = useState([])
-  const [products, setProducts] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [auth, setAuth] = useState({ loggedIn: false });
+  const [users, setUsers] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [orderHistory, setOrderHistory] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
-    void checkAuth()
-    void loadUsers()
-    void loadProducts()
+    void checkAuth();
+    void loadUsers();
+    void loadProducts();
+    void loadOrders();
   }, []);
 
   const checkAuth = async () => {
-    setIsLoading(true)
-    const response = await fetch("/api/login")
-    const result = await response.json()
-    setAuth(result)
-    setIsLoading(false)
-  }
+    setIsLoading(true);
+    const response = await fetch("/api/login");
+    const result = await response.json();
+    setAuth(result);
+    setIsLoading(false);
+  };
 
   const submitSignup = async (username, email, password) => {
-    setIsLoading(true)
+    setIsLoading(true);
     const response = await fetch("/api/users", {
       method: "post",
       headers: { 'Content-Type': 'application/json' },
@@ -63,7 +66,7 @@ export const GlobalProvider = ({ children }) => {
   }
 
   const logout = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     const response = await fetch("/api/login", {
       method: "delete"
     })
@@ -73,20 +76,27 @@ export const GlobalProvider = ({ children }) => {
   }
 
   const loadUsers = async () => {
-    setIsLoading(true)
-    const response = await fetch("/api/users")
-    const result = await response.json()
-    setUsers(result)
-    setIsLoading(false)
-  }
+    setIsLoading(true);
+    const response = await fetch("/api/users");
+    const result = await response.json();
+    setUsers(result);
+    setIsLoading(false);
+  };
 
   const loadProducts = async () => {
-    setIsLoading(true)
-    const response = await fetch("/api/products")
-    const result = await response.json()
-    setProducts(result)
-    setIsLoading(false)
-  }
+    setIsLoading(true);
+    const response = await fetch("/api/products");
+    const result = await response.json();
+    setProducts(result);
+    setIsLoading(false);
+  };
+  const loadOrders = async () => {
+    setIsLoading(true);
+    const response = await fetch("/api/orders");
+    const result = await response.json();
+    setOrderHistory(result);
+    setIsLoading(false);
+  };
 
   const addProduct = async ( item, price, weight, category, subcat, description, image ) => {
     setIsLoading(true)
@@ -110,7 +120,7 @@ export const GlobalProvider = ({ children }) => {
         auth,
         users,
         products,
-        // logged,
+        orderHistory,
         isLoading,
         submitSignup,
         submitChange,
