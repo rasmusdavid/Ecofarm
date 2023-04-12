@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import { useStates } from "react-easier";
 import { useState, useContext } from 'react';
 import GlobalContext from '../routing/Context';
+import { Alert } from 'react-bootstrap';
 
 
 export default ( {product} ) => {
@@ -21,9 +22,18 @@ export default ( {product} ) => {
         cart.total2 = cart.total2 + product.weight
         // cart.quantity = cart.quantity + quantity     
     }
+
+    const { removeProduct, auth } = useContext(GlobalContext)
+    const [message, setMessage] = useState('')
+
+    const removeItem = (id) => {
+        removeProduct(id)
+        setMessage(<Alert variant="danger">"Product removed"</Alert>)
+    }
+
  
     return <>
-
+    
         <Card style={{}}>
             <Card.Body>
                 <Card.Title>{product.item}</Card.Title>
@@ -50,8 +60,18 @@ export default ( {product} ) => {
 
                         </Col>
                         <Col>
-                            <Button variant="primary" type='button' onClick={(e) => add(e, product)}>Add to cart</Button>
+
                         </Col>
+                        <Col>
+                        {auth.admin 
+                        ? 
+                        <Button variant='danger' onClick={() => { removeItem(item._id) } }>Remove</Button> 
+                        :  
+                        <Button variant="primary" type='button' onClick={(e) => add(e, product)}>Add to cart</Button>
+                        }
+                            
+                        </Col>
+     
                     </Row>
                 </Form>
             </Card.Body>

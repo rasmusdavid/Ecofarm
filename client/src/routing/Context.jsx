@@ -4,7 +4,7 @@ const GlobalContext = createContext(null);
 
 export const GlobalProvider = ({ children }) => {
 
-  const [auth, setAuth] = useState({loggedIn:false})
+  const [auth, setAuth] = useState({ loggedIn: false })
   const [users, setUsers] = useState([])
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -26,9 +26,9 @@ export const GlobalProvider = ({ children }) => {
   const submitSignup = async (username, email, password) => {
     setIsLoading(true)
     const response = await fetch("/api/users", {
-        method: "post",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({username, email, password})
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, email, password })
     })
     const result = await response.json()
     setIsLoading(false)
@@ -36,26 +36,26 @@ export const GlobalProvider = ({ children }) => {
     void checkAuth()
   }
 
-  const submitChange = async (id ,username, email, password) => {
+  const submitChange = async (id, username, email, password) => {
     setIsLoading(true)
     const response = await fetch("/api/users/" + String(id), {
-        method: "post",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({"username": username, "email": email, "password": password})
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ "username": username, "email": email, "password": password })
     })
     const result = await response.json()
     setIsLoading(false)
-    console.log( "TEST", response.username )
+    console.log("TEST", response.username)
     void loadUsers()
     void checkAuth()
   }
 
-  const submitLogin = async (email, password ) => {
+  const submitLogin = async (email, password) => {
     setIsLoading(true)
     const response = await fetch("/api/login", {
-        method: "post",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({email, password})
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
     })
     const result = await response.json()
     setIsLoading(false)
@@ -65,11 +65,11 @@ export const GlobalProvider = ({ children }) => {
   const logout = async () => {
     setIsLoading(true)
     const response = await fetch("/api/login", {
-        method: "delete"
+      method: "delete"
     })
     const result = await response.json()
     setIsLoading(false)
-    setAuth({LoggedIn:false})
+    setAuth({ LoggedIn: false })
   }
 
   const loadUsers = async () => {
@@ -88,6 +88,22 @@ export const GlobalProvider = ({ children }) => {
     setIsLoading(false)
   }
 
+  const addProduct = async ( item, price, weight, category, subcat, description, image ) => {
+    setIsLoading(true)
+    const response = await fetch("/api/products", {
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ item, price, weight, category, subcat, description, image })
+    })
+    setIsLoading(false)
+  }
+
+  const removeProduct = async (id) => {
+    const response = await fetch("/api/products/" + id, {
+      method: "delete"
+    })
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -100,7 +116,9 @@ export const GlobalProvider = ({ children }) => {
         submitChange,
         submitLogin,
         logout,
-    }}
+        addProduct,
+        removeProduct
+      }}
     >
       {children}
     </GlobalContext.Provider>

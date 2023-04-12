@@ -14,7 +14,6 @@ const productSchema = new Schema( {
     price: Number,
     image: String
     
-    
 })
 
 mongoose.model('products', productSchema)
@@ -36,6 +35,12 @@ productRouter.post('/', async (request, response) =>{
     product.image = request.body.image
     await product.save()
     response.json("Saved")
+})
+
+productRouter.delete('/:id', async (request, response) => {
+    const productId = request.params.id;
+    await mongoose.models.products.findByIdAndDelete(productId);
+    response.json("Deleted");
 })
 
 export default productRouter
