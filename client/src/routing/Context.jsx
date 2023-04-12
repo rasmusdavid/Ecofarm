@@ -26,6 +26,13 @@ export const GlobalProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const submitMessage = async ( id, message ) => {
+    const response = await fetch('/api/msg/'+ id,{
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify( message )})
+    }
+
   const submitSignup = async (username, email, password) => {
     setIsLoading(true);
     const response = await fetch("/api/users", {
@@ -123,6 +130,7 @@ export const GlobalProvider = ({ children }) => {
         orderHistory,
         isLoading,
         submitSignup,
+        submitMessage,
         submitChange,
         submitLogin,
         logout,

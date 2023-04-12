@@ -42,3 +42,6 @@ api.use("/api/products", productRouter);
 
 import orderRouter from "./routes/order.js";
 api.use("/api/orders", orderRouter);
+
+import msgRouter from "./routes/message.js";
+api.use("/api/msg", orderRouter);

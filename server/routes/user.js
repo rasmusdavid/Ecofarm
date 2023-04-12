@@ -1,5 +1,6 @@
 import { Router } from "express";
 import mongoose, { Schema } from "mongoose";
+import { msgSchema } from "./messages.js";
 
 const userRouter = Router()
 
@@ -8,10 +9,7 @@ const userSchema = new Schema({
     email: String,
     admin: {type:Boolean, default:false},
     password: String,
-    messages: { in: {type: Boolean, default:true },
-                author: String,
-                text: String,
-                orderID: Number }
+    messages: [ msgSchema ]
 })
 
 mongoose.model('users', userSchema)
@@ -22,7 +20,6 @@ userRouter.get('/', async (request, response) =>{
 })
 
 userRouter.post('/', async (request, response)=>{
-    console.log(request.body);
     const user = new mongoose.models.users()
     user.username = request.body.username
     user.email = request.body.email
@@ -34,13 +31,11 @@ userRouter.post('/', async (request, response)=>{
 })
 
 userRouter.post('/:id', async (req, res)=>{
-        console.log(req.params.id)
         const account = await mongoose.models.users.findById(req.params.id)
         account.username = req.body.username ?? account.username
         account.email = req.body.email ?? account.email
         account.password = req.body.password ?? account.password
         await account.save()
-        console.log(account)
         res.json(account)
 })
 
