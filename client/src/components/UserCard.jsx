@@ -24,43 +24,15 @@ export default () => {
       </Card.Header>
       <Card.Body style={{}}>
         <Col style={{ flexDirection: "column" }}>
-          <Button variant="success"style={{ width: "100%", maxWidth: "100px", margin: "10px" }}onClick={() =>setContent(auth.admin ? <AddProduct /> : <UserProductList />)}
-          >
-            {auth.admin ? "Manage" : "Go Shop"}
-          </Button>
-          <Button
-            variant="success"
-            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
-            onClick={() => setContent(<OrderHistoria />)}
-          >
-            {" "}
-            Orders{" "}
-          </Button>
-          <Button
-            variant="success"
-            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
-            onClick={() => setContent(<UserCart />)}
-          >
-            Cart
-          </Button>
-          <Button
-            variant="success"
-            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
-            onClick={() => setContent(<AccountCard />)}
-          >
-            Account
-          </Button>
-          <Button
-            variant="success"
-            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
-            onClick={() => setContent(<MessageCard />)}
-          >
-            Messages
-          </Button>
-        </Col>
-        <LogoutButton />
-      </Card.Body>
-      {content}
+            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={ ()=> setContent(auth.admin ? <AddProduct/> :  <UserProductList/>)}>{auth.admin ? "Manage" : "Go Shop"}</Button>
+            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={ ()=> setContent(<OrderHistoria/>)}>Orders</Button>
+            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={ () => setContent(<UserCartPage />)}>Cart</Button>
+            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={ () => setContent(<AccountCard />)}>Account</Button>
+            <Button variant="success" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={ () => setContent(<MessageCard />)}>Messages</Button>
+            </Col>
+            <LogoutButton />
+        </Card.Body>
+        {content}
     </Card>
   );
 };
