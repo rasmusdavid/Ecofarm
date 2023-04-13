@@ -12,7 +12,7 @@ import GlobalContext from "../routing/Context";
 export default () => {
     const { auth } = useContext(GlobalContext)
     return <>
-        <Container style={{ margin: "auto" }} fluid="md">
+        <Container style={{ margin: "auto", maxWidth: "700px" }} fluid="md">
                 <Row className="p-3 mb-2 bg-success text-white" >
                 <h1>EcoFarm</h1>{String(auth.email)}    
                 </Row>

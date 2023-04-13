@@ -40,15 +40,15 @@ export default ()=>{
 
     return <Container>
                 <Row>
-                <Form style={{margin: "20px"}} variant="success" md="fluid">
+                <Form variant="success" className="d-grid gap-2 d-md-block" >
 
                         <Form.Control type="text" placeholder="Subject" onChange={ e => setSubject(e.target.value)}/>
                         <Form.Control type="textarea" as="textarea" rows={3} placeholder="Message" onChange={ e => setMsg(e.target.value)} />
                         
-                        <ButtonGroup size="md" variant="success">
+                        <ButtonGroup size="sm" variant="success" className="d-grid gap-2 d-md-block">
                             <Button variant="success" onClick={ handleSend }>Send to:</Button>
                             <Button variant="outline-success" disabled={true}>{reciver}</Button>
-                            <DropdownButton variant="outline-success" id="dropdown" title="" onSelect={ handleSelect }>
+                            <DropdownButton variant="outline-success" disabled={!auth.admin} id="dropdown" title="" onSelect={ handleSelect }>
                                 { users.map(user => {if(user.email !== undefined && !user.admin){
                                     return <Dropdown.Item eventKey={user.email}>{user.email}</Dropdown.Item>
                                 } })}

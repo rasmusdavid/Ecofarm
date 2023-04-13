@@ -1,6 +1,7 @@
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap";
 import LogoutButton from "./LogoutButton";
 import AccountCard from "./AccountCard";
 import OrderHistoria from "./OrderHistoria";
@@ -17,15 +18,15 @@ export default () => {
   const { auth } = useContext(GlobalContext);
 
   return (
-    <Card>
+    <Card className="d-grid gap-2 d-md-block">
       <Card.Header>
         <h1>Welcome {auth.username}</h1>
       </Card.Header>
       <Card.Body style={{}}>
-        <Col style={{ flexDirection: "column" }}>
+        <Col className="d-grid gap-2 d-md-block">
           <Button
             variant="success"
-            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
+            style={{ minWidth: "100px" }}
             onClick={() =>
               setContent(auth.admin ? <AddProduct /> : <UserProductList />)
             }
@@ -34,7 +35,7 @@ export default () => {
           </Button>
           <Button
             variant="success"
-            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
+            style={{ minWidth: "100px" }}
             onClick={() => setContent(<OrderHistoria />)}
           >
             {" "}
@@ -42,21 +43,21 @@ export default () => {
           </Button>
           <Button
             variant="success"
-            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
+            style={{ minWidth: "100px" }}
             onClick={() => setContent(<UserCartPage />)}
           >
             Cart
           </Button>
           <Button
             variant="success"
-            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
+            style={{ minWidth: "100px" }}
             onClick={() => setContent(<AccountCard />)}
           >
             Account
           </Button>
           <Button
             variant="success"
-            style={{ width: "100%", maxWidth: "100px", margin: "10px" }}
+            style={{ minWidth: "100px" }}
             onClick={() => setContent(<MessagePage />)}
           >
             Messages
