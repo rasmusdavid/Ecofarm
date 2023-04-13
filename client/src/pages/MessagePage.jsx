@@ -1,27 +1,32 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useContext } from "react";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import { useContext, useState } from "react";
 import GlobalContext from "../routing/Context";
 import SendMsg from "../components/SendMsg";
+import InboxMsg from "../components/InboxMsg";
+import { Container } from "react-bootstrap";
 
 
 
 export default ()=>{
     const { users, auth } = useContext(GlobalContext)
 
-    const user = []
-    users.map( (item) => { if( item.email === auth.email ) user.push(item) })
+    const [ show, setShow ] = useState(<SendMsg admin={auth.admin} />)
 
-    const logged = user[0]
+    const handleBtn = (e)=>{
+        e.preventDefault()
+        console.log( e.target.value )
+        if( e.target.value === "in" ) setShow(<InboxMsg admin={auth.admin} />)
+        else if( e.target.value === "send" ) setShow(<SendMsg admin={auth.admin} />)
+    }
 
-    return <SendMsg admin={logged.admin} />
-
-    // return <Form style={{margin: "20px"}} variant="success">
-    //             {String(logged.messages)}
-    //             <Form.Text><h1>Messages</h1></Form.Text>
-    //             <Form.Label>Sender:</Form.Label>
-    //             <Form.Control type="text" placeholder={logged.username} disabled={true} />
-    //             <Form.Label>Message:</Form.Label>
-    //             <Form.Control as="textarea" rows={3} placeholder={logged.username} disabled={true} />
-    //         </Form>
+    return <Container>
+                <ButtonGroup variant="outline-success" style={{marginLeft: "30px"}}>
+                    <Button  variant="outline-success" value="in" onClick={handleBtn}>Inbox</Button>
+                    <Button variant="outline-success" value="send" onClick={handleBtn}>Send message</Button>
+                    <Form.Text style={{marginLeft: "10px"}}><h3 style={{border: "10px"}}> Messages</h3></Form.Text>
+                </ButtonGroup>
+                {show}
+           </Container>
 }

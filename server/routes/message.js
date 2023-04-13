@@ -30,4 +30,13 @@ msgRouter.post('/:id', async (req, res) =>{
     res.json(user)
 })
 
+msgRouter.delete('/:id', async (req, res) => {
+    const userId = req.params.id;
+    await mongoose.models.users.findByIdAndUpdate(
+        { _id: req.params.id },
+        { $pull: { "messages": { "sender": req.body.sender, "text": req.body.text } }}
+    );
+    res.json("Deleted");
+  });
+
 export default msgRouter

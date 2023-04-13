@@ -31,6 +31,17 @@ export const GlobalProvider = ({ children }) => {
       method: "post",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify( message )})
+      void loadUsers()
+      void checkAuth()
+    }
+  
+  const deleteMessage = async ( id, clues ) => {
+    const response = await fetch('/api/msg/'+ id,{
+      method: "delete",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify( clues )})
+      void loadUsers()
+      void checkAuth()
     }
 
   const submitSignup = async (username, email, password) => {
@@ -131,6 +142,7 @@ export const GlobalProvider = ({ children }) => {
         isLoading,
         submitSignup,
         submitMessage,
+        deleteMessage,
         submitChange,
         submitLogin,
         logout,

@@ -14,7 +14,6 @@ export default ()=> {
     const temp = []
     users.map( item => {if( item.email === auth.email) temp.push(item) })
     const user = temp[0]
-    console.log(user)
 
     const handleSave = (e)=>{
         e.preventDefault()
