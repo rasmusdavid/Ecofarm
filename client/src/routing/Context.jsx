@@ -78,9 +78,9 @@ export const GlobalProvider = ({ children }) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
     })
-    const result = await response.json()
-    setIsLoading(false)
-    void checkAuth()
+      const result = await response.json()
+       setIsLoading(false)
+   void checkAuth()
   }
 
   const logout = async () => {
@@ -132,6 +132,14 @@ export const GlobalProvider = ({ children }) => {
     })
   }
 
+  const sendOrders = async (items) => {
+    const response = await fetch("/api/orders", {
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify( items )
+    })
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -140,6 +148,7 @@ export const GlobalProvider = ({ children }) => {
         products,
         orderHistory,
         isLoading,
+        sendOrders,
         submitSignup,
         submitMessage,
         deleteMessage,

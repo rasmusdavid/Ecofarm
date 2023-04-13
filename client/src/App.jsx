@@ -21,7 +21,7 @@ export default function () {
 
     // Reine la till const Cart + useStates
     //const [quantity, setQuantity] = useStates(null)
-     useStates('products', useFetch('/products.json'))
+   // useStates('products', useFetch('/products.json'))
 
     const cart = useStates('cart', {
         items: [],
