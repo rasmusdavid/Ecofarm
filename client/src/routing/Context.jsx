@@ -26,6 +26,24 @@ export const GlobalProvider = ({ children }) => {
     setIsLoading(false);
   };
 
+  const submitMessage = async ( id, message ) => {
+    const response = await fetch('/api/msg/'+ id,{
+      method: "post",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify( message )})
+      void loadUsers()
+      void checkAuth()
+    }
+  
+  const deleteMessage = async ( id, clues ) => {
+    const response = await fetch('/api/msg/'+ id,{
+      method: "delete",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify( clues )})
+      void loadUsers()
+      void checkAuth()
+    }
+
   const submitSignup = async (username, email, password) => {
     setIsLoading(true);
     const response = await fetch("/api/users", {
@@ -132,6 +150,8 @@ export const GlobalProvider = ({ children }) => {
         isLoading,
         sendOrders,
         submitSignup,
+        submitMessage,
+        deleteMessage,
         submitChange,
         submitLogin,
         logout,

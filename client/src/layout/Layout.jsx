@@ -5,14 +5,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/esm/Button";
 
+import { useContext } from "react";
+import GlobalContext from "../routing/Context";
+
 
 export default () => {
+    const { auth } = useContext(GlobalContext)
     return <>
-        <Container fluid="md">
-                <Row className="p-3 mb-2 bg-success text-white" style={{ maxWidth: "600px" }}>
-                <h1>EcoFarm</h1>    
+        <Container style={{ margin: "auto", maxWidth: "700px" }} fluid="md">
+                <Row className="p-3 mb-2 bg-success text-white" >
+                <h1>EcoFarm</h1>{String(auth.email)}    
                 </Row>
-                <Row>
+                <Row style={{}}>
                     <Outlet />
                 </Row>
         </Container>

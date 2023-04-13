@@ -1,9 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import GlobalContext from '../routing/Context';
 
-import { NavLink } from 'react-router-dom';
-
-import LoginForm from '../components/LoginForm'
+import LoginPage from '../pages/LoginPage'
 import AccountPage from '../pages/AccountPage'
 
 export default ()=> {
@@ -13,5 +11,5 @@ export default ()=> {
         return <AccountPage />
 
     }else{ 
-        return <LoginForm />
+        return <LoginPage />
     } }
