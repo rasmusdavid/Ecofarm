@@ -27,7 +27,7 @@ export default ()=> {
     return <Form>
                 <Form.Text><h1>Sign up.</h1></Form.Text><br />
                 <Form.Group className="mb-3" controlId="formUserName">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>Username</Form.Label>
                     <Form.Control type="username" placeholder="Enter username" onChange={e => {setUsername(e.target.value); setMessage("")}}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formEmail">

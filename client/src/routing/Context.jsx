@@ -80,6 +80,7 @@ export const GlobalProvider = ({ children }) => {
     })
       const result = await response.json()
        setIsLoading(false)
+       console.log(result)
    void checkAuth()
   }
 

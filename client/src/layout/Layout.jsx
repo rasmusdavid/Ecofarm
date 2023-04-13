@@ -14,7 +14,7 @@ export default () => {
     return <>
         <Container style={{ margin: "auto", maxWidth: "700px" }} fluid="md">
                 <Row className="p-3 mb-2 bg-success text-white" >
-                <h1>EcoFarm</h1>{String(auth.email)}    
+                <h1>EcoFarm</h1>
                 </Row>
                 <Row style={{}}>
                     <Outlet />

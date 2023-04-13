@@ -26,14 +26,11 @@ export default ()=>{
 
         const id = users.filter( user => user.email === reciver)[0]._id
 
-        console.log(id, { title: subject, text: msg, sender: auth.email})
-
         submitMessage(id, { title: subject, text: msg, sender: auth.email})
     }
 
     let temp = "Dropdown"
     const handleSelect = (eventKey) => {
-        console.log( eventKey )
         setReciver(eventKey)
         temp = reciver
     }
@@ -45,10 +42,10 @@ export default ()=>{
                         <Form.Control type="text" placeholder="Subject" onChange={ e => setSubject(e.target.value)}/>
                         <Form.Control type="textarea" as="textarea" rows={3} placeholder="Message" onChange={ e => setMsg(e.target.value)} />
                         
-                        <ButtonGroup size="sm" variant="success" className="d-grid gap-2 d-md-block">
+                        <ButtonGroup size="sm" variant="success">
                             <Button variant="success" onClick={ handleSend }>Send to:</Button>
                             <Button variant="outline-success" disabled={true}>{reciver}</Button>
-                            <DropdownButton variant="outline-success" disabled={!auth.admin} id="dropdown" title="" onSelect={ handleSelect }>
+                            <DropdownButton variant="outline-success" disabled={auth.admin ? false : true} id="dropdown" title="" onSelect={ handleSelect }>
                                 { users.map(user => {if(user.email !== undefined && !user.admin){
                                     return <Dropdown.Item eventKey={user.email}>{user.email}</Dropdown.Item>
                                 } })}

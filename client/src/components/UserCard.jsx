@@ -24,7 +24,7 @@ export default () => {
         <h1>Welcome {auth.username}</h1>
       </Card.Header>
       <Card.Body style={{}}>
-        <Col style={{ flexDirection: "column" }} className="d-grid gap-2 d-md-block">
+        <Col className="d-grid gap-2 d-md-block">
             <Button variant="success" style={{ minWidth: "100px", margin: "2px" }} onClick={ ()=> setContent(auth.admin ? <AddProduct/> :  <UserProductList/>)}>{auth.admin ? "Manage" : "Go Shop"}</Button>
             <Button variant="success" style={{ minWidth: "100px", margin: "2px" }} onClick={ ()=> setContent(<OrderHistoria/>)}>Orders</Button>
             <Button variant="success" style={{ minWidth: "100px", margin: "2px" }} onClick={ () => setContent(<UserCart />)}>Cart</Button>
