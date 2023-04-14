@@ -4,12 +4,8 @@ import mongoose, { Schema } from "mongoose";
 const orderRouter = Router();
 
 const orderScehema = new Schema({
-  items: [new Schema({
-    subcat: String,
-    item: String,
-    weight: Number,
-    price: Number
-  })],
+  item: String,
+  price: Number,
   email: String,
   sendid: String,
   total: Number,
@@ -29,11 +25,9 @@ orderRouter.get("/", async (request, response) => {
 orderRouter.post("/", async (request, response) => {
   console.log(request);
   const order = new mongoose.models.orders();
-  order.items = request.body.items
+  order.item = request.body.item
   order.email = request.session.user.email;
-  order.sendid = request.session.user.id;
-  order.total = request.body.total;
-  order.save();
+  await order.save();
   response.json("Saved");
 });
 

@@ -19,18 +19,11 @@ export default () => {
         setAdd(false)   
     }
 
-    const sendOrder1 = (cart1) => {
-        // const orderitems = { subcat: prod.subcat,
-        //                     item: prod.item,
-        //                     weight: prod.weight,
-        //                     price: prod.price}
-        const cart2 = Object.assign({}, cart1);
+    const sendOrder1 = (items) => {
+   
 
-
-        console.log(cart2)
-        // sendOrders(cart1)
-        
-        // sendOrders(items)
+        console.log(items._)
+        sendOrders(items)
          }
         
     return <>
@@ -72,7 +65,7 @@ export default () => {
         <ButtonGroup className="justify-content-center" >
             <Button variant="secondary" size="sm" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={emptyCart}>Empty Cart</Button>
            
-            <Button variant="secondary" size="sm" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={sendOrder1(cart)} >Send order</Button>
+            <Button variant="secondary" size="sm" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={() => sendOrder1(cart.items)}>Send order</Button>
         </ButtonGroup>
        
         </Container>

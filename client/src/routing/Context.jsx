@@ -115,6 +115,7 @@ export const GlobalProvider = ({ children }) => {
     const result = await response.json();
     setOrderHistory(result);
     setIsLoading(false);
+    void loadOrders();
   };
 
   const addProduct = async ( item, price, weight, category, subcat, description, image ) => {
@@ -135,12 +136,13 @@ export const GlobalProvider = ({ children }) => {
     void loadProducts();
   }
 
-  const sendOrders = async (total, items) => {
+  const sendOrders = async (items) => {
     const response = await fetch("/api/orders", {
       method: "post",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify( total, items )
+      body: JSON.stringify(items )
     })
+    void loadOrders();
   }
 
   return (
