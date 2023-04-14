@@ -125,19 +125,21 @@ export const GlobalProvider = ({ children }) => {
       body: JSON.stringify({ item, price, weight, category, subcat, description, image })
     })
     setIsLoading(false)
+    void loadProducts();
   }
 
   const removeProduct = async (id) => {
     const response = await fetch("/api/products/" + id, {
       method: "delete"
     })
+    void loadProducts();
   }
 
-  const sendOrders = async (items) => {
+  const sendOrders = async (total, items) => {
     const response = await fetch("/api/orders", {
       method: "post",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify( items )
+      body: JSON.stringify( total, items )
     })
   }
 

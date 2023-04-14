@@ -4,11 +4,15 @@ import mongoose, { Schema } from "mongoose";
 const orderRouter = Router();
 
 const orderScehema = new Schema({
-  item: String,
-  weight: Number,
-  price: Number,
+  items: [new Schema({
+                      subcat: String,
+                      item: String,
+                      weight: Number,
+                      price: Number})],
   email: String,
-  orderOwner: String
+  sendid: String,
+  total: Number,
+  verify: {type:Boolean, default:false}
 });
 
 mongoose.model("orders", orderScehema);
@@ -23,15 +27,12 @@ orderRouter.get("/", async (request, response) => {
 
 orderRouter.post("/", async (request, response) => {
   console.log(request);
- 
-  request.body.forEach(item => {
-    const order = new mongoose.models.orders();
-    order.item = item.item;
-    order.weight = item.weight;
-    order.price = item.price;
-    order.email = request.session.user.email;
-    order.save();
-  });
+  const order = new mongoose.models.orders();
+  order.items = request.body.items
+  order.email = request.session.user.email;
+  order.sendid = request.session.user.id;
+  order.total = request.body.total;
+  order.save();
   response.json("Saved");
 });
 
