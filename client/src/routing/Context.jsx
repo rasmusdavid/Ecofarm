@@ -115,7 +115,6 @@ export const GlobalProvider = ({ children }) => {
     const result = await response.json();
     setOrderHistory(result);
     setIsLoading(false);
-    void loadOrders();
   };
 
   const addProduct = async ( item, price, weight, category, subcat, description, image ) => {
@@ -145,6 +144,14 @@ export const GlobalProvider = ({ children }) => {
     void loadOrders();
   }
 
+  const handleVerify = async (id) => {
+    const response = await fetch("api/orders/" + id, {
+      method: "PATCH",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ verify: true})
+    })
+  }
+
   return (
     <GlobalContext.Provider
       value={{
@@ -153,12 +160,14 @@ export const GlobalProvider = ({ children }) => {
         products,
         orderHistory,
         isLoading,
+        handleVerify,
         sendOrders,
         submitSignup,
         submitMessage,
         deleteMessage,
         submitChange,
         submitLogin,
+        loadOrders,
         logout,
         addProduct,
         removeProduct

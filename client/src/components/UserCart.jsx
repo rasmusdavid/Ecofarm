@@ -21,8 +21,6 @@ export default () => {
 
     const sendOrder1 = (items) => {
    
-
-        console.log(items._)
         sendOrders(items)
          }
         
