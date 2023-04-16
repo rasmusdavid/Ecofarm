@@ -12,19 +12,8 @@ import GlobalContext from "../routing/Context";
 
 export default ()=>{
     const { users, auth, submitMessage, deleteMessage } = useContext(GlobalContext)
-    const [ subject, setSubject ] = useState("")
-    // const [ msg, setMsg ] = useState("")
-    const [ reciver, setReciver ] = useState("64366aa80e0cbeefc39445e6")
 
     const user = users.filter( item => item.email === auth.email )[0]
-
-    // const handleSend = (e)=>{
-    //     e.preventDefault()
-
-    //     console.log(reciver, { title: subject, text: msg, sender: auth.email})
-
-    //     submitMessage(reciver, { title: subject, text: msg, sender: auth.email})
-    // }
 
     const handleDel = (e) => {
         e.preventDefault()

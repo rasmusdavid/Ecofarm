@@ -9,10 +9,6 @@ import Row  from "react-bootstrap/Row";
 import { useContext, useState } from "react";
 import GlobalContext from "../routing/Context";
 
-
-
-
-
 export default ()=>{
     const { auth, users, submitMessage } = useContext(GlobalContext)
     const [ subject, setSubject ] = useState("")
@@ -27,6 +23,8 @@ export default ()=>{
         const id = users.filter( user => user.email === reciver)[0]._id
 
         submitMessage(id, { title: subject, text: msg, sender: auth.email})
+        setSubject("")
+        setMsg("")
     }
 
     let temp = "Dropdown"
@@ -37,7 +35,7 @@ export default ()=>{
 
     return <Container>
                 <Row>
-                <Form variant="success" className="d-grid gap-2 d-md-block" >
+                <Form variant="success">
 
                         <Form.Control type="text" placeholder="Subject" onChange={ e => setSubject(e.target.value)}/>
                         <Form.Control type="textarea" as="textarea" rows={3} placeholder="Message" onChange={ e => setMsg(e.target.value)} />

@@ -125,20 +125,32 @@ export const GlobalProvider = ({ children }) => {
       body: JSON.stringify({ item, price, weight, category, subcat, description, image })
     })
     setIsLoading(false)
+    void loadProducts();
   }
 
   const removeProduct = async (id) => {
     const response = await fetch("/api/products/" + id, {
       method: "delete"
     })
+    void loadProducts();
   }
 
-  const sendOrders = async (items) => {
+  const sendOrders = async (cart) => {
     const response = await fetch("/api/orders", {
       method: "post",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify( items )
+      body: JSON.stringify(cart )
     })
+    void loadOrders();
+  }
+
+  const handleVerify = async (id) => {
+    const response = await fetch("api/orders/" + id, {
+      method: "PATCH",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ verify: true})
+    })
+    void loadOrders()
   }
 
   return (
@@ -149,12 +161,14 @@ export const GlobalProvider = ({ children }) => {
         products,
         orderHistory,
         isLoading,
+        handleVerify,
         sendOrders,
         submitSignup,
         submitMessage,
         deleteMessage,
         submitChange,
         submitLogin,
+        loadOrders,
         logout,
         addProduct,
         removeProduct

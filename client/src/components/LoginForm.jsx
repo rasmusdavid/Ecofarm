@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import GlobalContext from '../routing/Context';
-// import {useStates, useFetch} from 'react-easier'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert'
@@ -37,12 +36,6 @@ export default ()=> {
             if(!temp[0]) setError(handleError("No matching email...", "danger"))
             if(temp[0] && !temp[1]) setError(handleError("Wrong password...", "danger"))}
     }
-
-                    
-
-
-                // setError(handleError("No matching email!", "danger"))
-    
 
     return <>
         <Form>

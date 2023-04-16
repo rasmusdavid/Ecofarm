@@ -30,6 +30,7 @@ loginRouter.get('/', async(request, response)=>{
                 username: request.session.user.username,
                 email: request.session.user.email,
                 admin: request.session.user.admin,
+                id: request.session.user._id,
                 LoggedIn : true
             })
             return
