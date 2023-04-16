@@ -22,10 +22,10 @@ export default ()=>{
     }
 
     return <Container>
-                <ButtonGroup variant="outline-success" className="d-grid gap-2 d-md-block">
+                <h3 style={{}}> Messages</h3>
+                <ButtonGroup variant="outline-success">
                     <Button  variant="outline-success" value="in" onClick={handleBtn}>Inbox</Button>
                     <Button variant="outline-success" value="send" onClick={handleBtn}>Send message</Button>
-                    <Form.Text ><h3 style={{border: "10px"}}> Messages</h3></Form.Text>
                 </ButtonGroup>
                 {show}
            </Container>

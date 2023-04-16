@@ -150,6 +150,7 @@ export const GlobalProvider = ({ children }) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ verify: true})
     })
+    void loadOrders()
   }
 
   return (

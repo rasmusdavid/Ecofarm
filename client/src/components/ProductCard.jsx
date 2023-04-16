@@ -4,11 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useStates } from "react-easier";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import GlobalContext from '../routing/Context';
 
-export default ( {product} ) => {
+export default ( {setCartinfo, cartinfo, product} ) => {
     const { removeProduct, auth } = useContext(GlobalContext)
+    // const [cartinfo, setCartinfo ] = useState(0)
     const cart = useStates('cart');
 
     const add = (product) => {
@@ -18,7 +19,9 @@ export default ( {product} ) => {
         cart.items.push(newProduct)
         cart.total = cart.total + newProduct.price
         cart.email = auth.email
-        cart.sendid = auth.id}
+        cart.sendid = auth.id
+    
+        setCartinfo(cartinfo += 1)}
 
     const removeItem = (id) => {
         removeProduct(id)

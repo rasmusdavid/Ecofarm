@@ -1,5 +1,6 @@
 import { useStates } from "react-easier";
 import Table from 'react-bootstrap/Table';
+import { Alert } from "react-bootstrap";
 import Button from "react-bootstrap/esm/Button";
 import ButtonGroup from "react-bootstrap/ButtonToolbar"
 import Container from "react-bootstrap/esm/Container";
@@ -20,11 +21,14 @@ export default () => {
     }
 
     const sendOrder1 = (items) => {
-   
-        sendOrders(items)
-        emptyCart()
-        setAdd(true)
-         }
+
+        if(cart.total === 0){
+            setAdd(<Alert variant="danger">You cant send an empty cart..</Alert>)
+        }
+        else{
+            sendOrders(items)
+            emptyCart()
+            setAdd(true)}}
         
     return <>
         <Container id="cart" >
@@ -66,6 +70,7 @@ export default () => {
            
             <Button variant="secondary" size="sm" style={{ width: "100%", maxWidth: "100px", margin: "10px" }} onClick={() => sendOrder1(cart)}>Send order</Button>
         </ButtonGroup>
+        {add}
        
         </Container>
      
