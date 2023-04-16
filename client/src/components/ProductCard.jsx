@@ -11,9 +11,18 @@ export default ( {product} ) => {
     const cart = useStates('cart');
     const add = (product) => {
 
-        cart.items.push(product)
-        cart.total = cart.total + product.price
-        cart.total2 = cart.total2 + product.weight
+        const newCart = {...cart}
+        const finalCart = Object.fromEntries(Object.entries(newCart))
+
+        const newProduct = {...product}
+        const finalProduct = Object.fromEntries(Object.entries(newProduct))
+
+        console.log(finalCart, finalProduct)
+
+        cart.items.push(finalProduct)
+        cart.total = cart.total + finalProduct.price
+        cart.total2 = cart.total2 + finalProduct.weight
+        console.log(cart)
     }
 
     const { removeProduct, auth } = useContext(GlobalContext)

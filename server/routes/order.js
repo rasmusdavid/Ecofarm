@@ -18,11 +18,12 @@ const orderScehema = new Schema({
 mongoose.model("orders", orderScehema);
 
 orderRouter.get("/", async (request, response) => {
-  //const order = await mongoose.models.orders.find();
-  if(request.session?.user?.email) {
-    const results = await mongoose.models.orders.find({ email: request.session.user.email})
-  response.json(results);
-  }
+  const order = await mongoose.models.orders.find();
+  response.json(order)
+  // if(request.session?.user?.email) {
+  //   const results = await mongoose.models.orders.find({ email: request.session.user.email})
+  // response.json(results);
+  // }
 });
 
 orderRouter.post("/", async (request, response) => {
