@@ -135,11 +135,11 @@ export const GlobalProvider = ({ children }) => {
     void loadProducts();
   }
 
-  const sendOrders = async (items) => {
+  const sendOrders = async (cart) => {
     const response = await fetch("/api/orders", {
       method: "post",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(items )
+      body: JSON.stringify(cart )
     })
     void loadOrders();
   }

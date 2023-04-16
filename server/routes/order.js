@@ -18,23 +18,13 @@ const orderScehema = new Schema({
 mongoose.model("orders3", orderScehema);
 
 orderRouter.get("/", async (request, response) => {
-  if(request.session?.user?.admin){
-    const results = await mongoose.models.orders3.find()
-    response.json(results);
-  }
-  else if(request.session?.user?.email) {
-    const results = await mongoose.models.orders3.find({ email: request.session.user.email})
-  response.json(results);
-  }
+  const product = await mongoose.models.orders3.find()
+  response.json(product);
 });
 
 orderRouter.post("/", async (request, response) => {
   try {
-    const order = new mongoose.models.orders3({
-      prods: request.body.map(item => item.item),
-      sum: request.body.map(item => item.price),
-      email: request.session.user.email
-    });
+    const order = new mongoose.models.orders3(request.body);
     
     await order.save();
     response.json("Saved");
