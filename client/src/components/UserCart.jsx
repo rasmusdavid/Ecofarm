@@ -13,10 +13,10 @@ export default () => {
     const { sendOrders } = useContext(GlobalContext)
 
     const emptyCart = () => {
-        cart = {items: [],
-                email: "",
-                sendid: "",
-                total: 0} 
+                cart.items = [],
+                cart.email = "",
+                cart.sendid = "",
+                cart.total = 0
     }
 
     const sendOrder1 = (items) => {
