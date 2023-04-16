@@ -1,4 +1,5 @@
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 import { useContext } from "react";
 import GlobalContext from "../routing/Context";
 
@@ -6,19 +7,44 @@ export default () => {
 
   const { orderHistory } = useContext(GlobalContext);
 
+  console.log(orderHistory)
+
   return <Card>
-          <p>TEST</p>
-          {orderHistory.map( order => {
-                  {order.items.map( obj => {
-                      return <Card><p>Hallå</p>
-                                {console.log(obj.item)}
-                                <p>{obj.item}</p>
-                                <p>{obj.price}</p>
-                                <p>{obj.weight}</p>
-                                <p>{obj.email}</p>
-                              </Card>
-                            })}
-            // return <div>{order.email}</div>
-            //        <div>{order.total}</div>
-          })} </Card> 
+    {orderHistory.map( order => {
+        return <div style={{display: "flex", alignItems: "space-between"}}>
+                  {order.items.map( obj => { 
+                    console.log(obj.item)
+                    return <div>
+                          <p>{obj.item} = {obj.weight} Kg = {obj.price} Kr</p>
+                      </div>
+                  })}
+                  <p>{order.total}</p>
+                  {order.verify ? <Button>Verified</Button> : <Button>Not verified</Button>}
+                </div>
+    })}
+  </Card>
 }
+
+// import Card from "react-bootstrap/Card";
+// import { useContext } from "react";
+// import GlobalContext from "../routing/Context";
+
+// export default () => {
+
+//   const { orderHistory } = useContext(GlobalContext);
+
+//   console.log(orderHistory)
+
+//   return <Card>
+//     {orderHistory.map( order => {
+
+//       console.log(order.items)
+
+//       order.items.map( obj => { 
+//         console.log(obj.item)
+//         return <p>HEJ</p>
+//       })
+
+//     })}
+//   </Card>
+// }

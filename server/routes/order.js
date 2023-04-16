@@ -15,10 +15,10 @@ const orderScehema = new Schema({
   verify: {type:Boolean, default:false}
 });
 
-mongoose.model("orders", orderScehema);
+mongoose.model("orders3", orderScehema);
 
 orderRouter.get("/", async (request, response) => {
-  const order = await mongoose.models.orders.find();
+  const order = await mongoose.models.orders3.find();
   response.json(order)
   // if(request.session?.user?.email) {
   //   const results = await mongoose.models.orders.find({ email: request.session.user.email})
@@ -28,7 +28,7 @@ orderRouter.get("/", async (request, response) => {
 
 orderRouter.post("/", async (request, response) => {
   console.log(request);
-  const order = new mongoose.models.orders();
+  const order = new mongoose.models.orders3();
   order.items = request.body.items
   order.email = request.session.user.email;
   order.sendid = request.session.user.id;
