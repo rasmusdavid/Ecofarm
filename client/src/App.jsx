@@ -13,11 +13,10 @@ export default function () {
     useDebug()
     useAutoKeys()
 
-    const cart = useStates('cart', {
-        items: [],
-        total: 0,
-        total2:0
-    })
+    const cart = useStates('cart', {items: [],
+                                    email: "",
+                                    sendid: "",
+                                    total: 0})
 
     return <GlobalProvider>
         <RouterProvider router={router} />

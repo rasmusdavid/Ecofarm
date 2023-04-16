@@ -8,17 +8,17 @@ import { useContext } from 'react';
 import GlobalContext from '../routing/Context';
 
 export default ( {product} ) => {
+    const { removeProduct, auth } = useContext(GlobalContext)
     const cart = useStates('cart');
+
     const add = (product) => {
 
         const newProduct = Object.assign({}, product);
 
         cart.items.push(newProduct)
         cart.total = cart.total + newProduct.price
-        cart.total2 = cart.total2 + newProduct.weight
-    }
-
-    const { removeProduct, auth } = useContext(GlobalContext)
+        cart.email = auth.email
+        cart.sendid = auth.id}
 
     const removeItem = (id) => {
         removeProduct(id)

@@ -16,68 +16,17 @@ export default ({  }) => {
     handleVerify(id)
   }
 
-  return <ListGroup>
+  return <div>
 
     {orderHistory.map(order => {
-      const sum = order.sum.reduce((acc, curr) => acc + curr, 0);
-      return <>
-      <ListGroup horizontal>
-      <ListGroup.Item>{order.prods.map(product => product).join(", ")}</ListGroup.Item>
-      <ListGroup.Item>{sum}kr</ListGroup.Item>
-      <ListGroup.Item>{order.email}</ListGroup.Item>
-      <ListGroup.Item>
-        {order.verify ? "Ready to pick up" : "Not ready for pick up"}
-        {auth.admin ? (
-          <Button style={{ width: "150px", margin: "2px" }} onClick={() => handleVerifyClick(order._id)}>Mark as ready for pick up</Button>
-        ) : ""}
-      </ListGroup.Item>
-    </ListGroup>
-      </>
+      return <div style={{display: "flex", justifyContent: "space-between", border: "1px solid black", width: "90%", margin: "auto"}}>
+                <div>
+                {order.items.map(obj => {
+                        return <p style={{fontSize: "10px"}}>{obj.item} = {obj.weight} Kg = {obj.price} Kr </p>})}
+                </div>
+                <p style={{fontSize: "15px"}}>Total: {order.total}</p>
+      </div>
     })}
 
-  </ListGroup>
+  </div>}
 
-  // <Card style={{}}>
-  // <Table className="table">
-  //       <thead>
-  //           <tr>
-  //               <th scope="col">Product</th>
-  //               <th scope="col">Weight</th>
-  //               <th scope="col">Price</th>
-  //               {/* <th scope="col">Quantity</th> */}
-  //           </tr>
-  //       </thead>
-
-  //       {cart.items.map((product, index) => <tbody>
-  //           <tr key={index}>
-  //               <td>{product.item}</td>
-  //               <td>{product.weight} kg</td>
-  //               <td>{product.price} kr</td>
-
-  //               {/* <td> {cart.quantity} </td> */}
-  //           </tr>
-  //       </tbody>)}
-
-  //       <tbody>
-  //           <tr>
-  //               <td>
-  //                   Total
-  //               </td>
-  //               <td>{cart.total2} kg</td>
-  //               <td>{cart.total} kr</td>
-  //               {/* <td>{cart.quantity} pcs.</td> */}
-  //           </tr>
-  //       </tbody>
-
-  //   </Table>
-  //   <Card.Body>
-  //     <Card.Title>{item.item}</Card.Title>
-  //     <Card.Img variant="top" src={item.image} />
-  //     <Card.Text>{item.email}</Card.Text>
-  //     <Card.Text>
-  //       {item.price} kr pcs. {item.weight} kg
-  //     </Card.Text>
-  //   </Card.Body>
-  // </Card>
-
-};
